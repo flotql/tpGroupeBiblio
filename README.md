@@ -26,25 +26,26 @@ FONCTIONNALITES DE BASE :
 - D'autres fonctionnalites de votre choix
 
 CLASS : 
-    - Personne / User (Raph)
-        - Personne : id = 1ere lettre nom . prenom (tout en minuscule)
-        - User : Faire un dictionnaire avec la liste des differents grades et une liste comprennant tous les livres empruntrer par         l'utilisateur 
-    - Livre / BD (Gaetan)
-        - Livre : 
-        - BD : 
-    - Bibliotheque (Florent)
+- Personne / User (Raph)
+    - Personne : id = 1ere lettre nom . prenom (tout en minuscule)
+    - User : Faire un dictionnaire avec la liste des differents grades et une liste comprennant tous les livres empruntrer par         l'utilisateur 
+- Livre / BD (Gaetan)
+    - Livre : 
+    - BD : 
+- Bibliotheque (Florent)
 
 Functions : ()
 
 Main : () 
-    - il doit etre le plus epure possible
+- il doit etre le plus epure possible
 
 
 
 FONCTIONS FUTUR:
 
 User
-    Grade : - monte en grade avec un nombre de livre emprunter (garde le meme prix)
-            - monte en grade en payant l'abonnement sup
+- Grade : 
+    - monte en grade avec un nombre de livre emprunter (garde le meme prix)
+    - monte en grade en payant l'abonnement sup
 
-Class : admin (heritage personne)
+- Class : admin (heritage personne)
