@@ -36,7 +36,8 @@ CLASS :
 
 Functions : ()
 
-Main : ()
+Main : () 
+    - il doit etre le plus epure possible
 
 
 
