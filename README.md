@@ -46,3 +46,5 @@ FONCTIONS FUTUR:
 User
     Grade : - monte en grade avec un nombre de livre emprunter (garde le meme prix)
             - monte en grade en payant l'abonnement sup
+
+Class : admin (heritage personne)
