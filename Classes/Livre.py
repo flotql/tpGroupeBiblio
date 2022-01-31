@@ -14,11 +14,11 @@ class Livre:
         self.retour = retour
 
     def Definirref(self):
-        self.Id = str(self.Titre[0] + self.auteur[0] + str(randrange(0, 999999)))
+        self.ref = str(self.Titre[0] + self.auteur[0] + str(randrange(0, 999999)))
 
 
-# a = Livre("Harry Potter 1", "J.K Rowling", "Français", "Fantastique", "Roman", "HJ135203", "True", "None")
-# print(a.categorie)
-# print(a.ref)
-# a.Definirref()
-# print(a.ref)
+a = Livre("Harry Potter 1", "J.K Rowling", "Français", "Fantastique", "Roman", "HJ135203", "True", "None")
+print(a.categorie)
+print(a.ref)
+a.Definirref()
+print(a.ref)
