@@ -41,7 +41,8 @@ test = Biblio()
 test.importUtilisateurs()
 print(
 
-    #repr -faire choix si 1 afficher utilisateurs 2 afficher livres ?
-    #faire un affichage liste rayon, livres utilisateurs ?
+    # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ?
+    # faire une recherche liste rayon, livres utilisateurs ?
     # faire l'ajout d'utilisateurs ou livres ici?
-    #
+    # les emprunts ici?
+    # faire un emprunt /prolonger emprunt
