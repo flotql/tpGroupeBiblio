@@ -35,13 +35,27 @@ class Biblio:
 
     def afficherUtilisateurs(self):
         for i in self.utilisateurs:
-            print("id",i.[])
+            print("id ",i[0],i[1],i[2])
+
+    def __repr__(self):
+        choix = input("1: Liste Utilisateurs \n2: Liste Livres")
+        affiche = ""
+        if choix == "1":
+            for i in self.utilisateurs:
+                affiche += i+"\n"
+        elif choix == "2":
+            for i in self.livres:
+                affiche += i+"\n"
+        else: print("Erreur, 1 ou 2 seulement")
+        return affiche
+
+
 
 test = Biblio()
 test.importUtilisateurs()
-print(
+test.afficherUtilisateurs()
 
-    # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ?
+    # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ? DONE
     # faire une recherche liste rayon, livres utilisateurs ?
     # faire l'ajout d'utilisateurs ou livres ici?
     # les emprunts ici?
