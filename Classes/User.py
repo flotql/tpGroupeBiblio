@@ -9,10 +9,21 @@ class User(Personne):
         self.grade = grade
 
 
-# d = User("c.gaetan", "corin", "gaetan", "JesuisGaetan", ["Objet Le Hobbit"], 3)
-# print(d.emprunts)
 
-def DefinirGrade():
+    def DefinirGrade(self):
+        NombreLivres = len(self.emprunts)
+        if NombreLivres >= 5:
+            self.grade = 3
+        elif NombreLivres >= 3:
+            self.grade = 2
+        else:
+            self.grade = 1
+        # print(self.grade)
+
+
+# d = User("c.gaetan", "corin", "gaetan", "JesuisGaetan", ["Objet Le Hobbit","Objet Le Hobbit","Objet Le Hobbit","Objet Le Hobbit","Objet Le Hobbit"], 1)
+# d.DefinirGrade()
+# print(d.grade)
 
 
 

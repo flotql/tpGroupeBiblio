@@ -9,6 +9,5 @@ class BD(Livre):
         self.dessinateur = dessinateur
 
 
-
 # b = BD("Injustice 1", "DC", "Français", "Fantastique", "BD", "ID104382", "True", "None", "True", "J Raapack")
 # print(b.categorie, b.dessinateur)
