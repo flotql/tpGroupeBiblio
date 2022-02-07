@@ -18,7 +18,7 @@ class Biblio:
         with open("../References/Utilisateurs.txt", "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 self.utilisateurs.append(i)
-        return self.utilisateurs
+
 
     def exportUtilisateurs(self):
         with open("../References/Utilisateurs.txt", "w") as file:
@@ -27,7 +27,7 @@ class Biblio:
 
     def importLivres(self):
         openLivres = open("../References/Livres.txt", "r")
-        lireLivres = openLivres.readlines
+        lireLivres = openLivres.readlines()
         for i in lireLivres:
             lesLivres = [i.split(" ; ")]
             if len(lesLivres) == 7:
@@ -78,14 +78,14 @@ class Biblio:
             elif cat == "4":
                 for i in enumerate(self.langue):
                     print(i)
-        elif choix == "2":
-            if cat == "1":
-
-            elif cat == "2":
-
-            elif cat == "3":
-
-            elif cat == "4":
+        # elif choix == "2":
+        #     if cat == "1":
+        #
+        #     elif cat == "2":
+        #
+        #     elif cat == "3":
+        #
+        #     elif cat == "4":
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
