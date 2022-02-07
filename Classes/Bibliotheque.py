@@ -46,38 +46,27 @@ class Biblio:
         elif choix == "2":
             for i in self.livres:
                 affiche += i+"\n"
-        else:
-            print("Erreur, 1 ou 2 seulement")
         return affiche
 
-    def rechercheLivre(self):
-        choix = input("1: Tous \n2: Disponnibles")
+    def rechercheLivre(self,cat,choix):
         if choix == "1":
-            cat = input("Recherche par: \n\t1: Catégorie \n\t2: Auteur \t\n3: Genre \t\n4: Langue")
             if cat == "1":
+                for i in self.livres:
+                    
+            elif cat == "2":
 
-            if cat == "2":
+            elif cat == "3":
 
-            if cat == "3":
+            elif cat == "4":
 
-            if cat == "4":
-
-            else:
-                print("Erreur, de 1 à 4 seulement")
         elif choix == "2":
-            cat = input("Recherche par: \n\t1: Catégorie \n\t2: Auteur \t\n3: Genre \t\n4: Langue")
             if cat == "1":
 
-            if cat == "2":
+            elif cat == "2":
 
-            if cat == "3":
+            elif cat == "3":
 
-            if cat == "4":
-
-            else:
-                print("Erreur, de 1 à 4 seulement")
-        else:
-            print("Erreur, 1 ou 2 seulement")
+            elif cat == "4":
 
 
 test = Biblio()
@@ -86,7 +75,7 @@ test.afficherUtilisateurs()
 print (test)
 
     # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ? DONE
-    # faire une recherche liste rayon, livres utilisateurs ? EN COURS
+    # faire une recherche liste rayon, livres utilisateurs ? EN COURS           (dispo bool, type: str)
     # faire l'ajout d'utilisateurs ou livres ici?
     # les emprunts ici?
     # faire un emprunt /prolonger emprunt
