@@ -20,13 +20,13 @@ class Biblio:
                 self.utilisateurs.append(i)
 
 
-    def exportUtilisateurs(self):
-        with open("../References/Utilisateurs.txt", "w") as file:
+    def exportUtilisateurs(self,chemin):
+        with open(chemin, "w") as file:
             for i in enumerate (self.utilisateurs):
                 file.writelines(i)
 
-    def importLivres(self):
-        openLivres = open("../References/Livres.txt", "r")
+    def importLivres(self,chemin):
+        openLivres = open(chemin, "r")
         lireLivres = openLivres.readlines()
         for i in lireLivres:
             lesLivres = [i.split(" ; ")]
@@ -44,8 +44,8 @@ class Biblio:
             if not objLivre.langue in self.langue:
                 self.langue.append(objLivre.langue)
 
-    def exportLivres(self):
-        with open("../References/Livres.txt", "w") as file:
+    def exportLivres(self,chemin):
+        with open(chemin, "w") as file:
             for i in enumerate(self.livres):
                 file.writelines(i)
 
