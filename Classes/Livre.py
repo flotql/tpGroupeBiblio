@@ -3,8 +3,8 @@ from random import randrange
 
 class Livre:
 
-    def __init__(self, Titre, auteur, langue, genre, categorie, ref, dispo, retour):
-        self.Titre = Titre
+    def __init__(self, titre, auteur, langue, genre, categorie, ref, dispo, retour):
+        self.Titre = titre
         self.auteur = auteur
         self.langue = langue
         self.genre = genre
@@ -14,7 +14,7 @@ class Livre:
         self.retour = retour
 
     def Definirref(self):
-        self.ref = str(self.Titre[0] + self.auteur[0] + str(randrange(0, 999999)))
+        self.ref = str(self.titre[0] + self.auteur[0] + str(randrange(0, 999999)))
 
 
 # a = Livre("Harry Potter 1", "J.K Rowling", "Français", "Fantastique", "Roman", "HJ135203", "True", "None")

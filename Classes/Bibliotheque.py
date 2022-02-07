@@ -11,6 +11,8 @@ class Biblio:
         self.auteur = []
         self.livres = []
         self.utilisateurs = []
+        self.categorie = []
+        self.langue = []
 
     def importUtilisateurs(self):
         with open("../References/Utilisateurs.txt", "r") as lireUtilisateur:
@@ -34,6 +36,11 @@ class Biblio:
                 objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9])
             if not objLivre.genre in self.rayon:
                 self.rayon.append(objLivre.genre)
+            if not objLivre.auteur in self.auteur:
+                self.auteur.append(objLivre.auteur)
+            if not objLivre.categorie in self.categorie:
+                self.categorie.append(objLivre.categorie)
+            if not objLivre.T
 
     def exportLivres(self):
         with open("../References/Livres.txt", "w") as file:
@@ -76,7 +83,7 @@ class Biblio:
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
-        
+
 
 test = Biblio()
 test.importUtilisateurs()
