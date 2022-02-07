@@ -9,6 +9,10 @@ class Personne:
     def DefinirID(self):
         self.id = str(self.nom[0]+"."+self.prenom)
 
+    def ChangerMotDePasse(self, motdepasse):
+        self.mdp = motdepasse
+
+
 
 
 

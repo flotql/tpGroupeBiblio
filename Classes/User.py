@@ -8,24 +8,16 @@ class User(Personne):
         self.emprunts = emprunts
         self.grade = grade
 
+    def ChangerGrade(self, grade):
+        self.grade = grade
+
+    def EmprunterLivre(self, livre):
+        self.emprunts.append(livre)
 
 
-    def DefinirGrade(self):
-        NombreLivres = len(self.emprunts)
-        if NombreLivres >= 7:
-            self.grade = 4
-        elif NombreLivres >= 5:
-            self.grade = 3
-        elif NombreLivres >= 3:
-            self.grade = 2
-        else:
-            self.grade = 1
-        # print(self.grade)
-
-
-d = User("c.gaetan", "corin", "gaetan", "JesuisGaetan", ["Objet Le Hobbit"], 1)
-d.DefinirGrade()
-print(d.grade)
+# d = User("c.gaetan", "corin", "gaetan", "JesuisGaetan", ["Objet Le Hobbit"], 1)
+# d.DefinirGrade()
+# print(d.grade)
 
 
 
