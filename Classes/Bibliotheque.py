@@ -1,5 +1,6 @@
 from Livre import *
 from BD import *
+from User import *
 
 class Biblio:
 
@@ -23,10 +24,10 @@ class Biblio:
                 file.writelines(i)
 
     def importLivres(self):
-        openLivres = open("../References/Livres.txt.txt", "r")
+        openLivres = open("../References/Livres.txt", "r")
         lireLivres = openLivres.readlines
         for i in lireLivres:
-            lesLivres = [i.split(";")]
+            lesLivres = [i.split(" ; ")]
             if len(lesLivres) == 7:
                 objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7])
             else:
@@ -73,6 +74,9 @@ class Biblio:
 
             elif cat == "4":
 
+    def ajoutUtilisateur(self,nouvelUtilisateur):
+        self.utilisateurs.append(nouvelUtilisateur)
+        
 
 test = Biblio()
 test.importUtilisateurs()
