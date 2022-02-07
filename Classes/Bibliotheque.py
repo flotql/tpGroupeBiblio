@@ -1,4 +1,5 @@
-
+from Livre import *
+from BD import *
 
 class Biblio:
 
@@ -25,8 +26,13 @@ class Biblio:
         openLivres = open("../References/Livres.txt.txt", "r")
         lireLivres = openLivres.readlines
         for i in lireLivres:
-            self.livres.append(i)
-        return self.livres
+            lesLivres = [i.split(";")]
+            if len(lesLivres) == 7:
+                objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7])
+            else:
+                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9])
+            if not objLivre.genre in self.rayon:
+                self.rayon.append(objLivre.genre)
 
     def exportLivres(self):
         with open("../References/Livres.txt", "w") as file:
@@ -50,9 +56,8 @@ class Biblio:
 
     def rechercheLivre(self,cat,choix):
         if choix == "1":
-            if cat == "1":
-                for i in self.livres:
-                    
+            if cat == "1": #categorie
+                #fantastique, horreur, roman, comic
             elif cat == "2":
 
             elif cat == "3":
