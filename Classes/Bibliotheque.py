@@ -40,7 +40,8 @@ class Biblio:
                 self.auteur.append(objLivre.auteur)
             if not objLivre.categorie in self.categorie:
                 self.categorie.append(objLivre.categorie)
-            if not objLivre.T
+            if not objLivre.langue in self.langue:
+                self.langue.append(objLivre.langue)
 
     def exportLivres(self):
         with open("../References/Livres.txt", "w") as file:
@@ -62,10 +63,11 @@ class Biblio:
                 affiche += i+"\n"
         return affiche
 
-    def rechercheLivre(self,cat,choix):
+    def rechercheLivre(self,choix, cat):
         if choix == "1":
-            if cat == "1": #categorie
-                #fantastique, horreur, roman, comic
+            if cat == "1":
+                for i in enumerate(self.categorie):
+                    print(i)
             elif cat == "2":
 
             elif cat == "3":
@@ -83,7 +85,7 @@ class Biblio:
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
-
+        print("Votred inscription est validée")
 
 test = Biblio()
 test.importUtilisateurs()

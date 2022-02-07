@@ -3,8 +3,8 @@ from Classes.Livre import Livre
 
 class BD(Livre):
 
-    def __init__(self, Titre, auteur, langue, genre, categorie, ref, dispo, retour, couleur, dessinateur):
-        super().__init__(Titre, auteur, langue, genre, categorie, ref, dispo, retour)
+    def __init__(self, titre, auteur, langue, genre, categorie, ref, dispo, retour, couleur, dessinateur):
+        super().__init__(titre, auteur, langue, genre, categorie, ref, dispo, retour)
         self.couleur = couleur
         self.dessinateur = dessinateur
 

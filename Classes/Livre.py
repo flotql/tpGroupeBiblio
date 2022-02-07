@@ -4,7 +4,7 @@ from random import randrange
 class Livre:
 
     def __init__(self, titre, auteur, langue, genre, categorie, ref, dispo, retour):
-        self.Titre = titre
+        self.titre = titre
         self.auteur = auteur
         self.langue = langue
         self.genre = genre
