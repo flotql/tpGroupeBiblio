@@ -14,8 +14,8 @@ class Biblio:
         self.categorie = []
         self.langue = []
 
-    def importUtilisateurs(self):
-        with open("../References/Utilisateurs.txt", "r") as lireUtilisateur:
+    def importUtilisateurs(self,chemin):
+        with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 self.utilisateurs.append(i)
 
