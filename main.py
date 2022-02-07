@@ -1,4 +1,4 @@
-# from Classes.Bibliotheque import Biblio
+from Classes.Bibliotheque import Biblio
 from Classes.Personne import Personne
 from Classes.User import User
 # from Classes.BD import BD
@@ -34,5 +34,3 @@ from Classes.User import User
 #             print("Votre mot de passe est incorrect")
 #         else:
 #             print("Connection réussie")
-
-

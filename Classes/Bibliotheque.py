@@ -34,6 +34,7 @@ class Biblio:
                 objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7])
             else:
                 objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9])
+            self.livres.append(objLivre)
             if not objLivre.genre in self.rayon:
                 self.rayon.append(objLivre.genre)
             if not objLivre.auteur in self.auteur:
@@ -52,16 +53,16 @@ class Biblio:
         for i in self.utilisateurs:
             print("id ",i[0],i[1],i[2])
 
-    def __repr__(self):
-        choix = input("1: Liste Utilisateurs \n2: Liste Livres\n")
-        affiche = ""
-        if choix == "1":
-            for i in self.utilisateurs:
-                affiche += i+"\n"
-        elif choix == "2":
-            for i in self.livres:
-                affiche += i+"\n"
-        return affiche
+    # def __repr__(self):
+    #     choix = input("1: Liste Utilisateurs \n2: Liste Livres\n")
+    #     affiche = ""
+    #     if choix == "1":
+    #         for i in self.utilisateurs:
+    #             affiche += i+"\n"
+    #     elif choix == "2":
+    #         for i in self.livres:
+    #             affiche += i+"\n"
+    #     return affiche
 
     def rechercheLivre(self,choix, cat):
         if choix == "1":
@@ -69,11 +70,14 @@ class Biblio:
                 for i in enumerate(self.categorie):
                     print(i)
             elif cat == "2":
-
+                for i in enumerate(self.auteur):
+                    print(i)
             elif cat == "3":
-
+                for i in enumerate(self.rayon):
+                    print(i)
             elif cat == "4":
-
+                for i in enumerate(self.langue):
+                    print(i)
         elif choix == "2":
             if cat == "1":
 
@@ -85,12 +89,18 @@ class Biblio:
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
-        print("Votred inscription est validée")
+        print("Votre inscription est validée")
+
+
+
+
 
 test = Biblio()
-test.importUtilisateurs()
-test.afficherUtilisateurs()
-print (test)
+# test.importUtilisateurs()
+# test.afficherUtilisateurs()
+# print (test)
+test.importLivres()
+
 
     # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ? DONE
     # faire une recherche liste rayon, livres utilisateurs ? EN COURS           (dispo bool, type: str)

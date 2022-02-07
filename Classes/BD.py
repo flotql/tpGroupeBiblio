@@ -1,4 +1,4 @@
-from Classes.Livre import Livre
+from Livre import Livre
 
 
 class BD(Livre):
