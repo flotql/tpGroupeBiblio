@@ -27,6 +27,7 @@ while True:
         nouvelInscrit = User("",nom, prenom, mdp, [], grade)
         nouvelInscrit.DefinirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
+        bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
 
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
