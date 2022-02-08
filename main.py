@@ -27,7 +27,7 @@ while True:
         nouvelInscrit = User("",nom, prenom, mdp, [], grade)
         nouvelInscrit.DefinirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
-        bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
+        # bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
 
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
@@ -94,11 +94,20 @@ while True:
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
                         if prolonger != "non" and prolonger != "oui":
-                            print("Merci d'écire oui ou non")
+                            print("Merci d'écrire oui ou non")
                         elif prolonger == "non":
                             pass
                         else: 
                             print(i.emprunts)
+                            livresEmprunter = i.emprunts
+                            livresEmprunter = livresEmprunter.split(" , ")
+                            print(i)
+                            for i in livresEmprunter:
+                                print(i)
+                                # for j in bibliotheque.livres:
+                                #     print(j.titre)
+                                #     if i == j.titre:
+                                #         print(i, j.retour)
                             # livreEmprunter = i.emprunts
                             # for i in bibliotheque.livres:
                             #     if i == Li
