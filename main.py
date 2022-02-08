@@ -1,6 +1,4 @@
-from ast import Pass
 import sys
-from xml.dom.expatbuilder import parseString
 sys.path.insert(1, './Classes')
 
 from Classes.Bibliotheque import Biblio
@@ -9,8 +7,8 @@ from Classes.User import User
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
+bibliotheque.importLivres("./References/Livres.txt")
 
-print(bibliotheque.utilisateurs)
 while True:
     nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2)\n")
     if nouveau != "1" and nouveau != "2":
@@ -56,8 +54,39 @@ while True:
                     if choix == "1": # Changer de Mot de Passe
                         i.ChangerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
 
-                    # elif choix == "2":
+                    elif choix == "2":
+                        choix = input("Recherchez :\n\t"
+                                      "(1) Par auteur\n\t"
+                                      "(2) Par rayon\n\t"
+                                      "(3) Par categorie\n\t"
+                                      "(4) Par langue\n\t")
+                        if choix == "1":
+                            bibliotheque.triLivres(bibliotheque.auteur)
+                            choix = input("Choisir un auteur\n")
+                            print("Voici les livres de", bibliotheque.auteur[int(choix) - 1], ":\t")
+                            bibliotheque.affichageTri("auteur", int(choix) - 1)
+                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+                        elif choix == "2":
+                            bibliotheque.triLivres(bibliotheque.rayon)
+                            choix = input("Choisir un genre\n")
+                            print("Voici les livres du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
+                            bibliotheque.affichageTri("genre", int(choix) - 1)
+                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+                        elif choix == "3":
+                            bibliotheque.triLivres(bibliotheque.categorie)
+                            choix = input("Choisir une catégorie\n")
+                            print("Voici les livres de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
+                            bibliotheque.affichageTri("categorie", int(choix) - 1)
+                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+                        elif choix == "4":
+                            bibliotheque.triLivres(bibliotheque.langue)
+                            choix = input("Choisir la langue\n")
+                            print("Voici les livres de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
+                            bibliotheque.affichageTri("langue", int(choix) - 1)
+                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+
                     # elif choix == "3":
+
                     # elif choix == "4":
 
                     # elif choix == "5":
@@ -66,9 +95,12 @@ while True:
                         if prolonger != "non" and prolonger != "oui":
                             print("Merci d'écire oui ou non")
                         elif prolonger == "non":
-                            Pass
+                            pass
                         else: 
                             print(i.emprunts)
+                            # livreEmprunter = i.emprunts
+                            # for i in bibliotheque.livres:
+                            #     if i == Li
                             livre = input("Quel livre souhaitez-vous prolonger ?\n")
                             durée = input("Combien de temps souhaitez-vous prolonger ? :\n\t"
                                   "(1) 1 semaine\n\t"
