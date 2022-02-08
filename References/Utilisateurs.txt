@@ -1,4 +1,4 @@
-p.maxime ; przybylo ; maxime ; Azerty77 ; [Assassin Royal] ; 1
+p.maxime ; przybylo ; maxime ; Azerty77 ; [Assassin Royal 1] ; 1
 c.gaetan ; corin ; gaetan ; JesuisGaetan ; [Le Hobbit] ; 3
 t.raphael ; thomas ; raphael ; raph123 ; [Harry Potter 2] ; 2
 t.florent ; tomps ; florent ; 123quatre ; [] ; 2
