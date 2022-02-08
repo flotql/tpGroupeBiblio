@@ -3,9 +3,9 @@ from Personne import *
 
 class User(Personne):
 
-    def __init__(self, id,  nom, prenom, mdp, emprunts, grade):
+    def __init__(self, id,  nom, prenom, mdp, grade):
         super().__init__(id,  nom, prenom, mdp)
-        self.emprunts = emprunts
+        self.emprunts = []
         self.grade = grade
 
     def ChangerGrade(self, grade):

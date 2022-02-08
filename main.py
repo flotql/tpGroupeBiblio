@@ -99,15 +99,12 @@ while True:
                             pass
                         else: 
                             print(i.emprunts)
-                            livresEmprunter = i.emprunts
-                            livresEmprunter = livresEmprunter.split(" , ")
-                            print(i)
-                            for i in livresEmprunter:
-                                print(i)
-                                # for j in bibliotheque.livres:
-                                #     print(j.titre)
-                                #     if i == j.titre:
-                                #         print(i, j.retour)
+                            for livreEmprunter in i.emprunts:
+                                print(livreEmprunter)
+                                for stockLivre in bibliotheque.livres:
+                                    print(stockLivre.titre)
+                                    if livreEmprunter == stockLivre.titre:
+                                        print(livreEmprunter, stockLivre.retour)
                             # livreEmprunter = i.emprunts
                             # for i in bibliotheque.livres:
                             #     if i == Li

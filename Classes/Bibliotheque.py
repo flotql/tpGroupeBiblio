@@ -18,8 +18,9 @@ class Biblio:
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 lesUtilisateurs = i.split(" ; ")
-                objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[4],lesUtilisateurs[5])
+                objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5])
                 self.utilisateurs.append(objUser)
+                # Ajouter chaque ref de lesutilisateurs[4] dans objUser.emprunts
 
     def exportUtilisateurs(self,chemin):
         with open(chemin, "w") as file:
@@ -45,7 +46,7 @@ class Biblio:
             if not objLivre.langue in self.langue:
                 self.langue.append(objLivre.langue)
 
-    def ajoutLivre(self):
+    # def ajoutLivre(self):
 
 
     def exportLivres(self,chemin):
@@ -68,7 +69,7 @@ class Biblio:
     #             affiche += i+"\n"
     #     return affiche
 
-    def dispoLivres(self,dispo):
+    # def dispoLivres(self,dispo):
 
 
     def triLivres(self, tri):
