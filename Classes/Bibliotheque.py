@@ -18,7 +18,7 @@ class Biblio:
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 lesUtilisateurs = [i.split(" ; ")]
-                objUser = Personne(lesUtilisateurs)
+                objUser = Personne(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3])
                 self.utilisateurs.append(objUser)
 
     def exportUtilisateurs(self,chemin):
@@ -71,7 +71,7 @@ class Biblio:
                 for index, i in enumerate(self.categorie):
                     if type == "1":
                        for j in self.livres:
-                           
+                           if
             elif cat == "2":
                 for index, i in enumerate(self.auteur):
                     print(i)
