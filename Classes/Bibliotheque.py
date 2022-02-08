@@ -17,7 +17,7 @@ class Biblio:
     def importUtilisateurs(self,chemin):
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
-                lesUtilisateurs = [i.split(" ; ")]
+                lesUtilisateurs = i.split(" ; ")
                 objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[4],lesUtilisateurs[5])
                 self.utilisateurs.append(objUser)
 
