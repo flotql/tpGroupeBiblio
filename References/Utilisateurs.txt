@@ -1,5 +1,5 @@
 p.maxime ; przybylo ; maxime ; Azerty77 ; [Objet livre Assassin Royal] ; 1
-c.gaetan ; corin ; gaetan ; JesuisGaetan ; [Objet Le Hobbit] ; 3
-t.raphael ; thomas ; raphael ; raph123 ; [Objet Harry Potter 2] ; 2
+c.gaetan ; corin ; gaetan ; JesuisGaetan ; [Objet Livre Le Hobbit] ; 3
+t.raphael ; thomas ; raphael ; raph123 ; [Objet Livre Harry Potter 2] ; 2
 t.florent ; tomps ; florent ; 123quatre ; [] ; 2
-s.romain ; soulie ; romain ; vioc48 ; [Objet L'âne Trotro Tome 23] ; 4
+s.romain ; soulie ; romain ; vioc48 ; [Objet BD L'âne Trotro Tome 23] ; 4

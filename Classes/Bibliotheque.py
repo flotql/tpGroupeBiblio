@@ -65,6 +65,9 @@ class Biblio:
     #             affiche += i+"\n"
     #     return affiche
 
+    def dispoLivres(self,dispo):
+
+
     def triLivres(self, tri):
         for index, i in enumerate(tri):
             print(index+1,": ",i)
