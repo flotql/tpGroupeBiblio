@@ -94,24 +94,22 @@ while True:
                         for livre in bibliotheque.livres:
                             if livre.dispo == "True":
                                 livredisponible.append(livre.titre)
-
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
                         for index, livreliste in enumerate(livredisponible):
                             print("("+str(index+1)+")", livreliste)
-                        choixdulivre = input("Quel livre souhaitez vous empruntez? indiquez 0 pour quitter")
-                        if choixdulivre == "0":
+                        choixdulivre = int(input("Quel livre souhaitez vous empruntez? indiquez 0 pour quitter"))
+                        if choixdulivre == 0:
                             pass
+                        choixdulivre = int(choixdulivre -1)
                         # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
-                        for index, livreliste in enumerate(livredisponible):
-                            if choixdulivre == str(index+1):
-                                i.emprunts.append(livreliste)
-                                print(i.emprunts)
-
-                                # enumerer les livres de la bibliotheque et si le titre est identique a celui de "livreliste", le passer en indisponible avec une date de retour.
-                                for livrebiblio in bibliotheque.livres:
-                                    if livrebiblio.titre == livreliste:
-                                        livre.dispo = "False"
-                                        livre.retour = ["jamais"]
+                        i.emprunts.append(livredisponible[choixdulivre])
+                        print("\nVous avez emprunté", i.emprunts[-1])
+                        input('Cliquer sur entrer pour continuer')
+                        # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
+                        for livrebiblio in bibliotheque.livres:
+                            if livrebiblio.titre == i.emprunts[-1]:
+                                livrebiblio.dispo = "False"
+                                livrebiblio.retour = ["jamais"]
 
 
 
