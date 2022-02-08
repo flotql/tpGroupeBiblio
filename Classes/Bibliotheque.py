@@ -45,6 +45,9 @@ class Biblio:
             if not objLivre.langue in self.langue:
                 self.langue.append(objLivre.langue)
 
+    def ajoutLivre(self):
+
+
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:
             for i in self.livres:
