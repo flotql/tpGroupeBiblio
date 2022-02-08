@@ -88,7 +88,33 @@ while True:
 
                     # elif choix == "3":
 
-                    # elif choix == "4":
+                    elif choix == "4":
+                        # Faire une liste de livre disponible
+                        livredisponible = []
+                        for livre in bibliotheque.livres:
+                            if livre.dispo == "True":
+                                livredisponible.append(livre.titre)
+
+                        # enumerer la liste livredisponible et se servir du index pour demander de choisir
+                        for index, livreliste in enumerate(livredisponible):
+                            print("("+str(index+1)+")", livreliste)
+                        choixdulivre = input("Quel livre souhaitez vous empruntez? indiquez 0 pour quitter")
+                        if choixdulivre == "0":
+                            pass
+                        # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
+                        for index, livreliste in enumerate(livredisponible):
+                            if choixdulivre == str(index+1):
+                                i.emprunts.append(livreliste)
+                                print(i.emprunts)
+
+                                # enumerer les livres de la bibliotheque et si le titre est identique a celui de "livreliste", le passer en indisponible avec une date de retour.
+                                for livrebiblio in bibliotheque.livres:
+                                    if livrebiblio.titre == livreliste:
+                                        livre.dispo = "False"
+                                        livre.retour = ["jamais"]
+
+
+
 
                     # elif choix == "5":
                     elif choix == "6": # Prolonger un Emprunt
@@ -105,9 +131,7 @@ while True:
                                     print(stockLivre.titre)
                                     if livreEmprunter == stockLivre.titre:
                                         print(livreEmprunter, stockLivre.retour)
-                            # livreEmprunter = i.emprunts
-                            # for i in bibliotheque.livres:
-                            #     if i == Li
+
                             livre = input("Quel livre souhaitez-vous prolonger ?\n")
                             durée = input("Combien de temps souhaitez-vous prolonger ? :\n\t"
                                   "(1) 1 semaine\n\t"
