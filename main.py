@@ -8,8 +8,9 @@ from Classes.User import User
 
 
 bibliotheque = Biblio()
-# bibliotheque.importLivres("./References/Livres.txt")
-# print(bibliotheque.livres)
+bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
+
+print(bibliotheque.utilisateurs)
 while True:
     nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2)\n")
     if nouveau != "1" and nouveau != "2":
@@ -52,7 +53,7 @@ while True:
                                   "(6) Prolonger un emprunt\n\t"
                                   "(7) Changer de grade\n\t"
                                   "(8) Se déconnecter\n\t")
-                    if choix == "1":
+                    if choix == "1": # Changer de Mot de Passe
                         i.ChangerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
 
                     # elif choix == "2":
@@ -60,7 +61,7 @@ while True:
                     # elif choix == "4":
 
                     # elif choix == "5":
-                    elif choix == "6":
+                    elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
                         if prolonger != "non" and prolonger != "oui":
                             print("Merci d'écire oui ou non")
@@ -73,17 +74,18 @@ while True:
                                   "(1) 1 semaine\n\t"
                                   "(2) 2 semaines\n\t"
                                   "(3) 3 semaines\n\t"
-                                  "(4) 1 mois\n\t")                
+                                  "(4) 1 mois\n\t")
+                            print("Votre demande a bien été prise en compte")            
 
-                    elif choix == "7":
+                    elif choix == "7": # Changer de Grade
                         grade = input("Combien de livres souhaitez vous emprunter?\n\t"
                                       "(1) 1-2 : gratuit\n\t"
                                       "(2) 3-4 : 5.00 euros par mois\n\t"
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
-                        i.ChangerMotDePasse(grade)
+                        i.ChangerGrade(grade)
 
-                    elif choix == "8":
+                    elif choix == "8": # Se Déconnecter
                         continuer = False
                         print("Déconnexion réussie")
                     else:
