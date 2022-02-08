@@ -17,12 +17,13 @@ class Biblio:
     def importUtilisateurs(self,chemin):
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
-                self.utilisateurs.append(i)
-
+                lesUtilisateurs = [i.split(" ; ")]
+                objUser = Personne(lesUtilisateurs)
+                self.utilisateurs.append(objUser)
 
     def exportUtilisateurs(self,chemin):
         with open(chemin, "w") as file:
-            for i in enumerate (self.utilisateurs):
+            for i in self.utilisateurs:
                 file.writelines(i)
 
     def importLivres(self,chemin):
@@ -46,7 +47,7 @@ class Biblio:
 
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:
-            for i in enumerate(self.livres):
+            for i in self.livres:
                 file.writelines(i)
 
     def afficherUtilisateurs(self):
@@ -64,19 +65,21 @@ class Biblio:
     #             affiche += i+"\n"
     #     return affiche
 
-    def rechercheLivre(self,choix, cat):
+    def rechercheLivre(self,choix, cat, type):
         if choix == "1":
-            if cat == "1":
-                for i in enumerate(self.categorie):
-                    print(i)
+            if cat == "1":         # a l'index +1 (user not used to 0)
+                for index, i in enumerate(self.categorie):
+                    if type == "1":
+                       for j in self.livres:
+                           
             elif cat == "2":
-                for i in enumerate(self.auteur):
+                for index, i in enumerate(self.auteur):
                     print(i)
             elif cat == "3":
-                for i in enumerate(self.rayon):
+                for index, i in enumerate(self.rayon):
                     print(i)
             elif cat == "4":
-                for i in enumerate(self.langue):
+                for index, i in enumerate(self.langue):
                     print(i)
         # elif choix == "2":
         #     if cat == "1":
