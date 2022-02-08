@@ -6,5 +6,5 @@ Assassin Royal 1 ; R Hobb ; Anglais ; Fantastique ; Roman ; AR1940289 ; False ; 
 Injustice 1 ; DC ; Français ; Fantastique ; BD ; ID104382 ; True ; None ; True ; J Raapack
 The Art of War ; S. Tzu ; Anglais ; Traité ; Roman ; TS310000 ; True ; None
 La Jeunesse de Picsou ; D. Rosa ; Français ; Comics ; BD ; LD779510 ; True ; None ; True ; C Barks
-L'âne Trotro Tome 23 ; B. Guettier; Français; Enfant ; BD ; LB549644 ; False ; 2022-03-03 ; False ; B. Guettier
+L'âne Trotro Tome 23 ; B. Guettier ; Français ; Enfant ; BD ; LB549644 ; False ; 2022-03-03 ; False ; B. Guettier
 Astérix Tome 39 ; J. Y. Ferri ; Français ; Comics ; BD ;  AJ012345 ; True ; None ; True ; D. Conrad

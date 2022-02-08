@@ -30,8 +30,8 @@ class Biblio:
         openLivres = open(chemin, "r")
         lireLivres = openLivres.readlines()
         for i in lireLivres:
-            lesLivres = [i.split(" ; ")]
-            if len(lesLivres) == 7:
+            lesLivres = i.split(" ; ")
+            if len(lesLivres) == 8:
                 objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7])
             else:
                 objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9])
@@ -65,46 +65,35 @@ class Biblio:
     #             affiche += i+"\n"
     #     return affiche
 
-    def rechercheLivre(self,choix, cat, type):
-        if choix == "1":
-            if cat == "1":         # a l'index +1 (user not used to 0)
-                for index, i in enumerate(self.categorie):
-                    if type == "1":
-                       for j in self.livres:
-                           if
-            elif cat == "2":
-                for index, i in enumerate(self.auteur):
-                    print(i)
-            elif cat == "3":
-                for index, i in enumerate(self.rayon):
-                    print(i)
-            elif cat == "4":
-                for index, i in enumerate(self.langue):
-                    print(i)
-        # elif choix == "2":
-        #     if cat == "1":
-        #
-        #     elif cat == "2":
-        #
-        #     elif cat == "3":
-        #
-        #     elif cat == "4":
+    def triLivres(self, tri):
+        for index, i in enumerate(tri):
+            print(index+1,": ",i)
+
+    def affichageTri(self,selection,valeur):
+        for i in self.livres:
+            if selection == "auteur":
+                if i.auteur == self.auteur[valeur]:
+                    print(i.titre)
+            elif selection == "genre":
+                if i.genre == self.rayon[valeur]:
+                    print(i.titre)
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
         print("Votre inscription est validée")
 
-
-
-
-
 test = Biblio()
-# test.importUtilisateurs()
-# test.afficherUtilisateurs()
-# print (test)
-test.importLivres()
 
-
+test.importLivres("../References/Livres.txt")
+choix = input("si auteur press 1, genre press 2")
+if choix == "1":
+    test.triLivres(test.auteur)
+    choix = input("quel auteur")
+    test.affichageTri("auteur",int(choix)-1)
+if choix == "2":
+    test.triLivres(test.rayon)
+    choix = input("quel genre")
+    test.affichageTri("genre",int(choix)-1)
     # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ? DONE
     # faire une recherche liste rayon, livres utilisateurs ? EN COURS           (dispo bool, type: str)
     # faire l'ajout d'utilisateurs ou livres ici?
