@@ -20,24 +20,25 @@ class Biblio:
     def __repr__(self):
         return f"{self.rayon},\n{self.auteur},\n{self.utilisateurs},\n{self.categorie},\n{self.langue},\n{self.titre}"
 
-    # def __repr__(self):
-    #     return str(f"{self.utilisateurs}")
-
     def importUtilisateurs(self,chemin):
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 lesUtilisateurs = i.split(" ; ")
-                if len(lesUtilisateurs) > 2:
-                    objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5][:-1])
-                    self.utilisateurs.append(objUser)
-                    objUser.emprunts.append(lesUtilisateurs[4])
-                # Ajouter chaque ref de lesutilisateurs[4] dans objUser.emprunts
+                # if len(lesUtilisateurs) > 2:
+                objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5][:-1])
+                if len(lesUtilisateurs[4]) == 2:
+                    pass
+                else:
+                    for i in (lesUtilisateurs[4][1:-1].split(", ")):
+                        objUser.emprunts.append(i[1:-1])
+                self.utilisateurs.append(objUser)
+            # Ajouter chaque ref de lesutilisateurs[4] dans objUser.emprunts
 
     def exportUtilisateurs(self,chemin): # voir les changements nom livres en ref
         with open(chemin, "w") as file:
             for i in self.utilisateurs:
                 print(str(i))
-                file.write(str(i))
+                file.write(str(i)+"\n")
 
     def importLivres(self,chemin):
         openLivres = open(chemin, "r")
