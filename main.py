@@ -1,3 +1,4 @@
+from datetime import *
 import sys
 sys.path.insert(1, './Classes')
 
@@ -24,7 +25,7 @@ while True:
                       "(3) 5-7 : 7.00 euros par mois\n\t"
                       "(4) 7-10 : 9.00 euros par mois\n\t")
 
-        nouvelInscrit = User("",nom, prenom, mdp, [], grade)
+        nouvelInscrit = User("",nom, prenom, mdp, grade)
         nouvelInscrit.DefinirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         # bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
@@ -97,19 +98,24 @@ while True:
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
                         for index, livreliste in enumerate(livredisponible):
                             print("("+str(index+1)+")", livreliste)
-                        choixdulivre = int(input("Quel livre souhaitez vous empruntez? indiquez 0 pour quitter"))
+                        choixdulivre = int(input("\nQuel livre souhaitez vous empruntez? indiquez 0 pour quitter\n"))
                         if choixdulivre == 0:
                             pass
-                        choixdulivre = int(choixdulivre -1)
-                        # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
-                        i.emprunts.append(livredisponible[choixdulivre])
-                        print("\nVous avez emprunté", i.emprunts[-1])
-                        input('Cliquer sur entrer pour continuer')
-                        # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
-                        for livrebiblio in bibliotheque.livres:
-                            if livrebiblio.titre == i.emprunts[-1]:
-                                livrebiblio.dispo = "False"
-                                livrebiblio.retour = ["jamais"]
+                        else:
+                            choixdulivre = int(choixdulivre -1)
+                            # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
+                            i.emprunts.append(livredisponible[choixdulivre])
+                            print("\nVous avez emprunté", i.emprunts[-1])
+                            # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
+                            for livrebiblio in bibliotheque.livres:
+                                if livrebiblio.titre == i.emprunts[-1]:
+                                    livrebiblio.dispo = "False"
+                                    livrebiblio.retour = date.today()
+                                    # aa = datetime.timedelta(day=10)
+                                    # print(livrebiblio.retour)
+                                    # b = livrebiblio.retour + aa
+                                    print("Il faudra rendre le livre avant le", livrebiblio.retour)
+                            input('\nCliquer sur entrer pour continuer')
 
 
 
