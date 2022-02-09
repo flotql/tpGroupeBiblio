@@ -154,9 +154,9 @@ while True:
 
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
-                        if prolonger != "non" and prolonger != "oui":
+                        if prolonger.lower() != "non" and prolonger.lower() != "oui":
                             print("Merci d'écrire oui ou non")
-                        elif prolonger == "non":
+                        elif prolonger.lower() == "non":
                             pass
                         else: 
                             # print(i.emprunts)
