@@ -123,24 +123,24 @@ class Biblio:
 
 test = Biblio()
 
-# test.importLivres("../References/Livres.txt")
-# choix = input("si auteur press 1, genre press 2, 3 cat, 4 langue")
-# if choix == "1":
-#     test.triLivres(test.auteur)
-#     choix = input("quel auteur")
-#     test.affichageTri("auteur",int(choix)-1)
-# if choix == "2":
-#     test.triLivres(test.rayon)
-#     choix = input("quel genre")
-#     test.affichageTri("genre",int(choix)-1)
-# if choix == "3":
-#     test.triLivres(test.categorie)
-#     choix = input("quel cat")
-#     test.affichageTri("categorie",int(choix)-1)
-# if choix == "4":
-#     test.triLivres(test.langue)
-#     choix = input("quel langue")
-#     test.affichageTri("langue",int(choix)-1)
+test.importLivres("../References/Livres.txt")
+choix = input("si auteur press 1, genre press 2, 3 cat, 4 langue")
+if choix == "1":
+    test.triLivres(test.auteur)
+    choix = input("quel auteur")
+    test.affichageTri("auteur",int(choix)-1)
+if choix == "2":
+    test.triLivres(test.rayon)
+    choix = input("quel genre")
+    test.affichageTri("genre",int(choix)-1)
+if choix == "3":
+    test.triLivres(test.categorie)
+    choix = input("quel cat")
+    test.affichageTri("categorie",int(choix)-1)
+if choix == "4":
+    test.triLivres(test.langue)
+    choix = input("quel langue")
+    test.affichageTri("langue",int(choix)-1)
     # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ? DONE
     # faire une recherche liste rayon, livres utilisateurs ? EN COURS           (dispo bool, type: str)
     # faire l'ajout d'utilisateurs ou livres ici?
