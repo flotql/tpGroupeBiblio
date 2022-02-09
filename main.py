@@ -135,6 +135,7 @@ while True:
                                     livreBiblio.dispo = "False"
                                     livreBiblio.retour = date.today()+timedelta(days=14)
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
+                                    livreBiblio.retour = str(livreBiblio.retour)
                             input('\nTaper sur entrer pour continuer')
 
                     elif choix == "5": # Rendre un livre
@@ -191,13 +192,13 @@ while True:
                                     if i.emprunts[livre-1] == stockLivre.titre:
                                         stockLivre.retour = datetime.strptime(stockLivre.retour, "%Y-%m-%d")
                                         stockLivre.retour = datetime.date(stockLivre.retour)
-                                        print(stockLivre.retour, type(stockLivre.retour))
                                         if duree == "1":
                                             stockLivre.retour = stockLivre.retour + timedelta(days=14)
                                             print("Vous avez jusqu'au", stockLivre.retour, "pour rendre votre livre.")
                                         else:
                                             stockLivre.retour = stockLivre.retour + timedelta(days=30)
                                             print("Vous avez jusqu'au", stockLivre.retour, "pour rendre votre livre.")
+                                        stockLivre.retour = str(stockLivre.retour)
                                 print("**********************")
 
 
