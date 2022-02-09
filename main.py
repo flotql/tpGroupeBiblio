@@ -1,3 +1,4 @@
+from datetime import *
 import sys
 sys.path.insert(1, './Classes')
 
@@ -24,7 +25,7 @@ while True:
                       "(3) 5-7 : 7.00 euros par mois\n\t"
                       "(4) 7-10 : 9.00 euros par mois\n\t")
 
-        nouvelInscrit = User("",nom, prenom, mdp, [], grade)
+        nouvelInscrit = User("",nom, prenom, mdp, grade)
         nouvelInscrit.DefinirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         # bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
@@ -92,7 +93,7 @@ while True:
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
                         for index, livreliste in enumerate(bibliotheque.disponible):
                             print("("+str(index+1)+")", livreliste)
-                        choixdulivre = int(input("Quel livre souhaitez vous empruntez? indiquez 0 pour quitter"))
+                        choixdulivre = int(input("\nQuel livre souhaitez vous empruntez? indiquez 0 pour quitter\n"))
                         if choixdulivre == 0:
                             pass
                         choixdulivre = int(choixdulivre -1)
@@ -106,6 +107,11 @@ while True:
                             if livreBiblio.titre == i.emprunts[-1]:
                                 livreBiblio.dispo = "False"
                                 livreBiblio.retour = ["jamais"]
+                                # aa = datetime.timedelta(day=10)
+                                # print(livrebiblio.retour)
+                                # b = livrebiblio.retour + aa
+                                print("Il faudra rendre le livre avant le", livrebiblio.retour)
+                        input('\nCliquer sur entrer pour continuer')
 
 
 
