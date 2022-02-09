@@ -1,7 +1,7 @@
 class Personne:
 
     def __init__(self, id,  nom, prenom, mdp):
-        self.Id = id
+        self.id = id
         self.nom = nom
         self.prenom = prenom
         self.mdp = mdp

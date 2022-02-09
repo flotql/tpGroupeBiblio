@@ -11,8 +11,8 @@ bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
 bibliotheque.importLivres("./References/Livres.txt")
 
 while True:
-    nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2)\n")
-    if nouveau != "1" and nouveau != "2":
+    nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2) / Quitter(3)\n")
+    if nouveau != "1" and nouveau != "2" and nouveau != "3":
         print("Merci d'inscrire le chiffre 1 ou 2\n")
     elif nouveau == "2": # l'utilisateur n'a pas de compte
         print("Démarrage de votre inscription")
@@ -28,8 +28,6 @@ while True:
         nouvelInscrit = User("",nom, prenom, mdp, grade)
         nouvelInscrit.DefinirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
-        # bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
-
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
 
@@ -139,7 +137,6 @@ while True:
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
                             input('\nTaper sur entrer pour continuer')
 
-
                     elif choix == "5": # Rendre un livre
                         if i.emprunts == []:
                             print("Vous n'avez emprunté aucun livre.")
@@ -222,4 +219,6 @@ while True:
 
             else:
                 pass
-
+    elif nouveau == "3":
+        bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
+        break

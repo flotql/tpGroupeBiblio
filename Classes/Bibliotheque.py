@@ -21,14 +21,17 @@ class Biblio:
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 lesUtilisateurs = i.split(" ; ")
-                objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5])
-                self.utilisateurs.append(objUser)
+                if len(lesUtilisateurs) > 2:
+                    objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5])
+                    self.utilisateurs.append(objUser)
+                    objUser.emprunts.append(lesUtilisateurs[4])
                 # Ajouter chaque ref de lesutilisateurs[4] dans objUser.emprunts
 
-    def exportUtilisateurs(self,chemin):
+    def exportUtilisateurs(self,chemin): # voir les changements nom livres en ref
         with open(chemin, "w") as file:
             for i in self.utilisateurs:
-                file.writelines(i)
+                print(str(i))
+                file.write(str(i))
 
     def importLivres(self,chemin):
         openLivres = open(chemin, "r")
@@ -60,7 +63,7 @@ class Biblio:
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:
             for i in self.livres:
-                file.writelines(i)
+                file.write(str(i))
 
     def afficherUtilisateurs(self):
         for i in self.utilisateurs:

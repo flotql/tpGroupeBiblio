@@ -9,7 +9,7 @@ class User(Personne):
         self.grade = grade
 
     def __repr__(self):
-        return str(f"{self.nom},{self.prenom},{self.mdp},{self.emprunts},{self.grade}")
+        return str(f"{self.id} ; {self.nom} ; {self.prenom} ; {self.mdp} ; {self.emprunts} ; {self.grade}")
 
     def ChangerGrade(self, grade):
         self.grade = grade
