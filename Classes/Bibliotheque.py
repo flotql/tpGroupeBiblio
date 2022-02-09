@@ -17,6 +17,9 @@ class Biblio:
         self.disponible = []
         self.titre = []
 
+    def __repr__(self):
+        return str(f"{self.rayon},{self.auteur},{self.livres},{self.utilisateurs},{self.categorie},{self.langue},{self.disponible},{self.titre}")
+
     def importUtilisateurs(self,chemin):
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
