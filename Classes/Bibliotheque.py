@@ -13,6 +13,7 @@ class Biblio:
         self.utilisateurs = []
         self.categorie = []
         self.langue = []
+        self.disponible = []
 
     def importUtilisateurs(self,chemin):
         with open(chemin, "r") as lireUtilisateur:
@@ -45,6 +46,9 @@ class Biblio:
                 self.categorie.append(objLivre.categorie)
             if not objLivre.langue in self.langue:
                 self.langue.append(objLivre.langue)
+            if objLivre.dispo == "True":
+                self.disponible.append(objLivre)
+
 
     # def ajoutLivre(self):
 
@@ -72,12 +76,13 @@ class Biblio:
     # def dispoLivres(self,dispo):
 
 
+
     def triLivres(self, tri):
         for index, i in enumerate(tri):
             print(index+1,": ",i)
 
     def affichageTri(self,selection,valeur):
-        for i in self.livres:
+        for i in self.disponible:
             if selection == "auteur":
                 if i.auteur == self.auteur[valeur]:
                     print(i.titre)
@@ -94,6 +99,9 @@ class Biblio:
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
         print("Votre inscription est validée")
+
+
+ #########################            TEST                 ###########################
 
 test = Biblio()
 

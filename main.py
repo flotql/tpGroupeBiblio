@@ -89,27 +89,23 @@ while True:
                     # elif choix == "3": # Recherche ciblée
 
                     elif choix == "4": # Emprunter un livre
-                        # Faire une liste de livre disponible
-                        livredisponible = []
-                        for livre in bibliotheque.livres:
-                            if livre.dispo == "True":
-                                livredisponible.append(livre.titre)
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
-                        for index, livreliste in enumerate(livredisponible):
+                        for index, livreliste in enumerate(bibliotheque.disponible):
                             print("("+str(index+1)+")", livreliste)
                         choixdulivre = int(input("Quel livre souhaitez vous empruntez? indiquez 0 pour quitter"))
                         if choixdulivre == 0:
                             pass
                         choixdulivre = int(choixdulivre -1)
                         # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
-                        i.emprunts.append(livredisponible[choixdulivre])
+                        i.emprunts.append(bibliotheque.disponible[choixdulivre])
                         print("\nVous avez emprunté", i.emprunts[-1])
+                        bibliotheque.disponible.pop(choixdulivre)
                         input('Cliquer sur entrer pour continuer')
                         # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
-                        for livrebiblio in bibliotheque.livres:
-                            if livrebiblio.titre == i.emprunts[-1]:
-                                livrebiblio.dispo = "False"
-                                livrebiblio.retour = ["jamais"]
+                        for livreBiblio in bibliotheque.livres:
+                            if livreBiblio.titre == i.emprunts[-1]:
+                                livreBiblio.dispo = "False"
+                                livreBiblio.retour = ["jamais"]
 
 
 
