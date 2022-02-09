@@ -16,9 +16,14 @@ class Livre:
     def Definirref(self):
         self.ref = str(self.titre[0] + self.auteur[0] + str(randrange(0, 999999)))
 
+    def __repr__(self):
+        return str("Voici les éléments de la BD:\n\t"
+                   "Titre: "+self.titre+"      Auteur: "+self.auteur+"\n\t"
+                   "Langue: "+self.langue+"      Genre: "+self.genre+"\n\t"
+                   "Categorie: " + self.categorie + "      Référence: "+self.ref+"\n\t"
+                   "Disponibilité: " + self.dispo + "      Date de retour: "+self.retour+"\n\t")
+
 
 # a = Livre("Harry Potter 1", "J.K Rowling", "Français", "Fantastique", "Roman", "HJ135203", "True", "None")
-# print(a.categorie)
-# print(a.ref)
-# a.Definirref()
-# print(a.ref)
+#
+# print(a)

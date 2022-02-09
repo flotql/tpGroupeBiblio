@@ -18,9 +18,9 @@ class User(Personne):
         self.emprunts.append(livre)
 
 
-# d = User("c.gaetan", "corin", "gaetan", "JesuisGaetan", ["Objet Le Hobbit"], 1)
-# d.DefinirGrade()
-# print(d.grade)
+# d = User("c.gaetan", "corin", "gaetan", "JesuisGaetan", 1)
+#
+# print(d)
 
 
 
