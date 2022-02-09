@@ -124,20 +124,21 @@ while True:
                         else:
                             choixdulivre = int(choixdulivre -1)
                             # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
-                            i.emprunts.append(bibliotheque.disponible[choixdulivre])
-                            print("\nVous avez emprunté", i.emprunts[-1].titre)
+                            i.emprunts.append(bibliotheque.disponible[choixdulivre].titre)
+                            print("\nVous avez emprunté", i.emprunts[-1])
                             bibliotheque.disponible.pop(choixdulivre)
                             # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
                             for livreBiblio in bibliotheque.livres:
-                                if livreBiblio.titre == i.emprunts[-1].titre:
+                                if livreBiblio.titre == i.emprunts[-1]:
                                     livreBiblio.dispo = "False"
                                     livreBiblio.retour = date.today()+timedelta(days=7)
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
-                            input('\nCliquer sur entrer pour continuer')
+                            print(i.emprunts)
+                            input('\nTaper sur entrer pour continuer')
 
                     elif choix == "5": # Rendre un livre
-                        for index,livreemprunté in i.emprunts.titre:
-                            print(index, livreemprunté)
+                        for index,livreEmprunter in i.emprunts.titre:
+                            print(index, livreEmprunter)
 
                     
                     elif choix == "6": # Prolonger un Emprunt
