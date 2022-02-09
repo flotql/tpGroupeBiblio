@@ -6,8 +6,8 @@ class Personne:
         self.prenom = prenom
         self.mdp = mdp
 
-    def __repr__(self):
-        return str(f"{self.nom},{self.prenom},{self.mdp}")
+    # def __repr__(self):
+    #     return str(f"{self.nom},{self.prenom},{self.mdp}")
 
     def DefinirID(self):
         self.id = str(self.nom[0]+"."+self.prenom)

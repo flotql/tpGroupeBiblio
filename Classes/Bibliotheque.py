@@ -18,14 +18,17 @@ class Biblio:
         self.titre = []
 
     def __repr__(self):
-        return str(f"{self.rayon},{self.auteur},{self.livres},{self.utilisateurs},{self.categorie},{self.langue},{self.disponible},{self.titre}")
+        return f"{self.rayon},\n{self.auteur},\n{self.utilisateurs},\n{self.categorie},\n{self.langue},\n{self.titre}"
+
+    # def __repr__(self):
+    #     return str(f"{self.utilisateurs}")
 
     def importUtilisateurs(self,chemin):
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 lesUtilisateurs = i.split(" ; ")
                 if len(lesUtilisateurs) > 2:
-                    objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5])
+                    objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5][:-1])
                     self.utilisateurs.append(objUser)
                     objUser.emprunts.append(lesUtilisateurs[4])
                 # Ajouter chaque ref de lesutilisateurs[4] dans objUser.emprunts
