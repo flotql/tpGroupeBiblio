@@ -14,6 +14,7 @@ class Biblio:
         self.categorie = []
         self.langue = []
         self.disponible = []
+        self.titre = []
 
     def importUtilisateurs(self,chemin):
         with open(chemin, "r") as lireUtilisateur:
@@ -46,6 +47,8 @@ class Biblio:
                 self.categorie.append(objLivre.categorie)
             if not objLivre.langue in self.langue:
                 self.langue.append(objLivre.langue)
+            if not objLivre.titre in self.titre:
+                self.titre.append(objLivre.titre)
             if objLivre.dispo == "True":
                 self.disponible.append(objLivre)
 
@@ -73,10 +76,6 @@ class Biblio:
     #             affiche += i+"\n"
     #     return affiche
 
-    # def dispoLivres(self,dispo):
-
-
-
     def triLivres(self, tri):
         for index, i in enumerate(tri):
             print(index+1,": ",i)
@@ -95,6 +94,25 @@ class Biblio:
             elif selection == "langue":
                 if i.langue == self.langue[valeur]:
                     print(i.titre)
+
+    def rechercheLivre(self,selection,valeur):
+        for i in self.livres:
+            if selection == "titre":
+                for j in self.titre:
+                    if valeur in j:
+                        print (i.titre)
+            if selection == "auteur":
+                for j in self.auteur:
+                    if valeur in j:
+                        print (i.auteur)
+            if selection == "categorie":
+                for j in self.categorie:
+                    if valeur in j:
+                        print (i.categorie)
+            if selection == "genre":
+                for j in self.rayon:
+                    if valeur in j:
+                        print (i.genre)
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
