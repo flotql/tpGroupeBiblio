@@ -69,25 +69,25 @@ while True:
                             choix = input("Choisir un auteur\n")
                             print("Voici les livres disponibles de", bibliotheque.auteur[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("auteur", int(choix) - 1)
-                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "2":
                             bibliotheque.triLivres(bibliotheque.rayon)
                             choix = input("Choisir un genre\n")
                             print("Voici les livres disponibles du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("genre", int(choix) - 1)
-                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "3":
                             bibliotheque.triLivres(bibliotheque.categorie)
                             choix = input("Choisir une catégorie\n")
                             print("Voici les livres disponibles de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("categorie", int(choix) - 1)
-                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "4":
                             bibliotheque.triLivres(bibliotheque.langue)
                             choix = input("Choisir la langue\n")
                             print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("langue", int(choix) - 1)
-                            a = input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
 
 
                     elif choix == "3":  # Recherche ciblée
@@ -100,18 +100,22 @@ while True:
                             choix = input(" Quel livre cherchez-vous?\n")
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("titre", choix)
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "2":
                             choix = input(" Quel auteur cherchez-vous?\n")
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("auteur", choix)
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "3":
                             choix = input(" Quel categorie cherchez-vous?\n")
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("categorie", choix)
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "4":
                             choix = input(" Quel genre cherchez-vous?\n")
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("genre", choix)
+                            input("\nAppuyez sur \"entrer\" pour continuer\n")
 
 
                     elif choix == "4": # Emprunter un livre
@@ -137,19 +141,24 @@ while True:
 
 
                     elif choix == "5": # Rendre un livre
-                        for livreBiblio in bibliotheque.livres:
-                            for index, livreEmprunter in enumerate(i.emprunts):
-                                if livreBiblio.titre == livreEmprunter:
-                                    print(("("+str(index+1)+")"), livreEmprunter, "// à rendre avant le", livreBiblio.retour)
-                        indexLivreARendre = int(input("Quel livre voulais vous rendre?\n"))
-                        print("\nLe livre",i.emprunts[indexLivreARendre-1],"a bien été rendu")
-                        for livreBiblio in bibliotheque.livres:
-                            if livreBiblio.titre == i.emprunts[indexLivreARendre-1]:
-                                livreBiblio.dispo = "True"
-                                livreBiblio.retour = "None"
-                                bibliotheque.disponible.append(livreBiblio)
-                        i.emprunts.pop(indexLivreARendre - 1)
-                        input('\nTaper sur entrer pour continuer')
+                        if i.emprunts == []:
+                            print("Vous n'avez emprunté aucun livre.")
+                            input('\nTaper sur entrer pour continuer')
+
+                        else:
+                            for livreBiblio in bibliotheque.livres:
+                                for index, livreEmprunter in enumerate(i.emprunts):
+                                    if livreBiblio.titre == livreEmprunter:
+                                        print(("("+str(index+1)+")"), livreEmprunter, "// à rendre avant le", livreBiblio.retour)
+                            indexLivreARendre = int(input("Quel livre voulais vous rendre?\n"))
+                            print("\nLe livre",i.emprunts[indexLivreARendre-1],"a bien été rendu")
+                            for livreBiblio in bibliotheque.livres:
+                                if livreBiblio.titre == i.emprunts[indexLivreARendre-1]:
+                                    livreBiblio.dispo = "True"
+                                    livreBiblio.retour = "None"
+                                    bibliotheque.disponible.append(livreBiblio)
+                            i.emprunts.pop(indexLivreARendre - 1)
+                            input('\nTaper sur entrer pour continuer')
 
 
                     elif choix == "6": # Prolonger un Emprunt
