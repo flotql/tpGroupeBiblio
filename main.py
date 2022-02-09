@@ -151,6 +151,7 @@ while True:
                             pass
                         else: 
                             # print(i.emprunts)
+                            print("**********************")
                             print("Vos livres en cours sont :\t")
                             for livreEmprunter in i.emprunts:
                                 # print(livreEmprunter)
@@ -158,7 +159,7 @@ while True:
                                     # print(stockLivre.titre)
                                     if livreEmprunter == stockLivre.titre:
                                         print(livreEmprunter + ".", "Il doit être rendu d'ici le :", stockLivre.retour)
-
+                            print("**********************")
                             decompte = 0
                             for index,livreEmprunter in enumerate(i.emprunts):
                                 print("("+str(index+1)+")", "=", livreEmprunter)
