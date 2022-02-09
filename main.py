@@ -55,7 +55,7 @@ while True:
                     if choix == "1": # Changer de Mot de Passe
                         i.ChangerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
 
-                    elif choix == "2":
+                    elif choix == "2": # Afficher les livres disponibles
                         choix = input("Recherchez :\n\t"
                                       "(1) Par auteur\n\t"
                                       "(2) Par rayon\n\t"
@@ -86,9 +86,9 @@ while True:
                             bibliotheque.affichageTri("langue", int(choix) - 1)
                             a = input("\nAppuyez sur \"entrer\" pour continuer\n")
 
-                    # elif choix == "3":
+                    # elif choix == "3": # Recherche ciblée
 
-                    elif choix == "4":
+                    elif choix == "4": # Emprunter un livre
                         # Faire une liste de livre disponible
                         livredisponible = []
                         for livre in bibliotheque.livres:
@@ -114,7 +114,8 @@ while True:
 
 
 
-                    # elif choix == "5":
+                    # elif choix == "5": # Rendre un livre
+                    
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
                         if prolonger != "non" and prolonger != "oui":
