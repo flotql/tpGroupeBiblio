@@ -94,25 +94,21 @@ while True:
                                       "(3) Par categorie\n\t"
                                       "(4) Par genre\n\t")
                         if choix == "1":
-                            bibliotheque.triLivres(bibliotheque.titre)
                             choix = input(" Quel livre cherchez-vous?\n")
                             print(f"Voici les livres comportant {choix} :\t")
-                            bibliotheque.rechercheLivre("titre",choix)
+                            bibliotheque.rechercheLivre("titre", choix)
                         elif choix == "2":
-                            bibliotheque.triLivres(bibliotheque.auteur)
-                            choix = input("Quel auteur cherchez-vous?\n")
-                            print(f"Voici les auteurs comportant {choix} :\t")
-                            bibliotheque.rechercheLivre("auteur",choix)
+                            choix = input(" Quel auteur cherchez-vous?\n")
+                            print(f"Voici les livres comportant {choix} :\t")
+                            bibliotheque.rechercheLivre("auteur", choix)
                         elif choix == "3":
-                            bibliotheque.triLivres(bibliotheque.categorie)
-                            choix = input("Quel catégorie de livre recherchez-vous?\n")
-                            print(f"Voici les catégories comportant {choix} :\t")
-                            bibliotheque.rechercheLivre("categorie",choix)
+                            choix = input(" Quel categorie cherchez-vous?\n")
+                            print(f"Voici les livres comportant {choix} :\t")
+                            bibliotheque.rechercheLivre("categorie", choix)
                         elif choix == "4":
-                            bibliotheque.triLivres(bibliotheque.rayon)
-                            choix = input("Quel genre de livre recherchez-vous?\n")
-                            print(f"Voici les genres comportant {choix} :\t")
-                            bibliotheque.rechercheLivre("genre",choix)
+                            choix = input(" Quel genre cherchez-vous?\n")
+                            print(f"Voici les livres comportant {choix} :\t")
+                            bibliotheque.rechercheLivre("genre", choix)
 
                     elif choix == "4": # Emprunter un livre
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir

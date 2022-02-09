@@ -2,6 +2,7 @@ from Livre import *
 from BD import *
 from User import *
 
+
 class Biblio:
 
     nomBib = "La petite lecture paisible"
@@ -96,23 +97,22 @@ class Biblio:
                     print(i.titre)
 
     def rechercheLivre(self,selection,valeur):
-        for i in self.livres:
-            if selection == "titre":
-                for j in self.titre:
-                    if valeur in j:
-                        print (i.titre)
-            if selection == "auteur":
-                for j in self.auteur:
-                    if valeur in j:
-                        print (i.auteur)
-            if selection == "categorie":
-                for j in self.categorie:
-                    if valeur in j:
-                        print (i.categorie)
-            if selection == "genre":
-                for j in self.rayon:
-                    if valeur in j:
-                        print (i.genre)
+        if selection == "titre":
+            for j in self.titre:
+                if valeur.lower() in j.lower():
+                    print(j)
+        if selection == "auteur":
+            for j in self.auteur:
+                if valeur.lower() in j.lower():
+                    print (j)
+        if selection == "categorie":
+            for j in self.categorie:
+                if valeur.lower() in j.lower():
+                    print (j)
+        if selection == "genre":
+            for j in self.rayon:
+                if valeur.lower() in j.lower():
+                    print (j)
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
@@ -121,26 +121,15 @@ class Biblio:
 
  #########################            TEST                 ###########################
 
-test = Biblio()
+# test = Biblio()
+#
+# test.importLivres("../References/Livres.txt")
+# choix = input("si auteur press 1, genre press 2, 3 cat, 4 langue")
+# if choix == "1":
+#     choix = input(" Quel livre cherchez-vous?\n")
+#     print(f"Voici les livres comportant {choix} :\t")
+#     test.rechercheLivre("titre", choix)
 
-test.importLivres("../References/Livres.txt")
-choix = input("si auteur press 1, genre press 2, 3 cat, 4 langue")
-if choix == "1":
-    test.triLivres(test.auteur)
-    choix = input("quel auteur")
-    test.affichageTri("auteur",int(choix)-1)
-if choix == "2":
-    test.triLivres(test.rayon)
-    choix = input("quel genre")
-    test.affichageTri("genre",int(choix)-1)
-if choix == "3":
-    test.triLivres(test.categorie)
-    choix = input("quel cat")
-    test.affichageTri("categorie",int(choix)-1)
-if choix == "4":
-    test.triLivres(test.langue)
-    choix = input("quel langue")
-    test.affichageTri("langue",int(choix)-1)
     # repr -faire choix si 1 afficher utilisateurs 2 afficher livres ? DONE
     # faire une recherche liste rayon, livres utilisateurs ? EN COURS           (dispo bool, type: str)
     # faire l'ajout d'utilisateurs ou livres ici?
