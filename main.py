@@ -53,8 +53,10 @@ while True:
                                   "(6) Prolonger un emprunt\n\t"
                                   "(7) Changer de grade\n\t"
                                   "(8) Se déconnecter\n\t")
+
                     if choix == "1": # Changer de Mot de Passe
                         i.ChangerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
+
 
                     elif choix == "2": # Afficher les livres disponibles
                         choix = input("Recherchez :\n\t"
@@ -87,6 +89,7 @@ while True:
                             bibliotheque.affichageTri("langue", int(choix) - 1)
                             a = input("\nAppuyez sur \"entrer\" pour continuer\n")
 
+
                     elif choix == "3":  # Recherche ciblée
                         choix = input("Recherchez :\n\t"
                                       "(1) Par titre\n\t"
@@ -114,6 +117,7 @@ while True:
                             print(f"Voici les genres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("genre",choix)
 
+
                     elif choix == "4": # Emprunter un livre
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
                         for index, livreliste in enumerate(bibliotheque.disponible):
@@ -131,17 +135,26 @@ while True:
                             for livreBiblio in bibliotheque.livres:
                                 if livreBiblio.titre == i.emprunts[-1]:
                                     livreBiblio.dispo = "False"
-                                    livreBiblio.retour = date.today()+timedelta(days=7)
+                                    livreBiblio.retour = date.today()+timedelta(days=14)
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
-                            input('\nTaper sur Entrer pour continuer')
+                            input('\nTaper sur entrer pour continuer')
+
 
                     elif choix == "5": # Rendre un livre
-                        for index,livreEmprunter in i.emprunts.titre:
-                            print(index, livreEmprunter)
+                        for livreBiblio in bibliotheque.livres:
+                            for index, livreEmprunter in enumerate(i.emprunts):
+                                if livreBiblio.titre == livreEmprunter:
+                                    print(("("+str(index+1)+")"), livreEmprunter, "// à rendre avant le", livreBiblio.retour)
+                        indexLivreARendre = int(input("Quel livre voulais vous rendre?\n"))
+                        print("\nLe livre",i.emprunts[indexLivreARendre-1],"a bien été rendu")
+                        for livreBiblio in bibliotheque.livres:
+                            if livreBiblio.titre == i.emprunts[indexLivreARendre-1]:
+                                livreBiblio.dispo = "True"
+                                livreBiblio.retour = "None"
+                                bibliotheque.disponible.append(livreBiblio)
+                        i.emprunts.pop(indexLivreARendre - 1)
+                        input('\nTaper sur entrer pour continuer')
 
-
-
-                    # elif choix == "5": # Rendre un livre
 
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
@@ -182,6 +195,7 @@ while True:
                                             print("Vous avez jusqu'au", stockLivre.retour, "pour rendre votre livre.")
                                 print("**********************")
 
+
                     elif choix == "7": # Changer de Grade
                         grade = input("Combien de livres souhaitez vous emprunter?\n\t"
                                       "(1) 1-2 : gratuit\n\t"
@@ -189,6 +203,7 @@ while True:
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
                         i.ChangerGrade(grade)
+
 
                     elif choix == "8": # Se Déconnecter
                         continuer = False
