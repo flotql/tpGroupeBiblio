@@ -9,6 +9,7 @@ from Classes.User import User
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
 bibliotheque.importLivres("./References/Livres.txt")
+print(bibliotheque)
 
 while True:
     nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2) / Quitter(3)\n")
