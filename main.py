@@ -65,25 +65,25 @@ while True:
                         if choix == "1":
                             bibliotheque.triLivres(bibliotheque.auteur)
                             choix = input("Choisir un auteur\n")
-                            print("Voici les livres de", bibliotheque.auteur[int(choix) - 1], ":\t")
+                            print("Voici les livres disponibles de", bibliotheque.auteur[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("auteur", int(choix) - 1)
                             a = input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "2":
                             bibliotheque.triLivres(bibliotheque.rayon)
                             choix = input("Choisir un genre\n")
-                            print("Voici les livres du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
+                            print("Voici les livres disponibles du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("genre", int(choix) - 1)
                             a = input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "3":
                             bibliotheque.triLivres(bibliotheque.categorie)
                             choix = input("Choisir une catégorie\n")
-                            print("Voici les livres de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
+                            print("Voici les livres disponibles de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("categorie", int(choix) - 1)
                             a = input("\nAppuyez sur \"entrer\" pour continuer\n")
                         elif choix == "4":
                             bibliotheque.triLivres(bibliotheque.langue)
                             choix = input("Choisir la langue\n")
-                            print("Voici les livres de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
+                            print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("langue", int(choix) - 1)
                             a = input("\nAppuyez sur \"entrer\" pour continuer\n")
 
@@ -96,24 +96,24 @@ while True:
                         choixdulivre = int(input("\nQuel livre souhaitez vous empruntez? indiquez 0 pour quitter\n"))
                         if choixdulivre == 0:
                             pass
-                        choixdulivre = int(choixdulivre -1)
-                        # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
-                        i.emprunts.append(bibliotheque.disponible[choixdulivre])
-                        print("\nVous avez emprunté", i.emprunts[-1].titre)
-                        bibliotheque.disponible.pop(choixdulivre)
-                        input('Cliquer sur entrer pour continuer')
-                        # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
-                        for livreBiblio in bibliotheque.livres:
-                            if livreBiblio.titre == i.emprunts[-1].titre:
-                                livreBiblio.dispo = "False"
-                                livreBiblio.retour = ["jamais"]
-                                # aa = datetime.timedelta(day=10)
-                                # print(livrebiblio.retour)
-                                # b = livrebiblio.retour + aa
-                                print("Il faudra rendre le livre avant le", livreBiblio.retour)
-                        input('\nCliquer sur entrer pour continuer')
+                        else:
+                            choixdulivre = int(choixdulivre -1)
+                            # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
+                            i.emprunts.append(bibliotheque.disponible[choixdulivre])
+                            print("\nVous avez emprunté", i.emprunts[-1].titre)
+                            bibliotheque.disponible.pop(choixdulivre)
+                            # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
+                            for livreBiblio in bibliotheque.livres:
+                                if livreBiblio.titre == i.emprunts[-1].titre:
+                                    livreBiblio.dispo = "False"
+                                    livreBiblio.retour = date.today()+timedelta(days=7)
+                                    print("Il faudra rendre le livre avant le", livreBiblio.retour)
+                            input('\nCliquer sur entrer pour continuer')
 
-                    # elif choix == "5": # Rendre un livre
+                    elif choix == "5": # Rendre un livre
+                        for index,livreemprunté in i.emprunts.titre:
+                            print(index, livreemprunté)
+
                     
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
