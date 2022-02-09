@@ -104,7 +104,7 @@ while True:
                         input('Cliquer sur entrer pour continuer')
                         # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
                         for livreBiblio in bibliotheque.livres:
-                            if livreBiblio.titre == i.emprunts[-1]:
+                            if livreBiblio.titre == i.emprunts[-1].titre:
                                 livreBiblio.dispo = "False"
                                 livreBiblio.retour = ["jamais"]
                                 # aa = datetime.timedelta(day=10)
