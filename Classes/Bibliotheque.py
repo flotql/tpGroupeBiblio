@@ -66,17 +66,6 @@ class Biblio:
         for i in self.utilisateurs:
             print("id ",i[0],i[1],i[2])
 
-    # def __repr__(self):
-    #     choix = input("1: Liste Utilisateurs \n2: Liste Livres\n")
-    #     affiche = ""
-    #     if choix == "1":
-    #         for i in self.utilisateurs:
-    #             affiche += i+"\n"
-    #     elif choix == "2":
-    #         for i in self.livres:
-    #             affiche += i+"\n"
-    #     return affiche
-
     def triLivres(self, tri):
         for index, i in enumerate(tri):
             print(index+1,": ",i)
