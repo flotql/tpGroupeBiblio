@@ -189,6 +189,9 @@ while True:
                                     "(2) 1 mois\n\t")
                                 for stockLivre in bibliotheque.livres:
                                     if i.emprunts[livre-1] == stockLivre.titre:
+                                        stockLivre.retour = datetime.strptime(stockLivre.retour, "%Y-%m-%d")
+                                        stockLivre.retour = datetime.date(stockLivre.retour)
+                                        print(stockLivre.retour, type(stockLivre.retour))
                                         if duree == "1":
                                             stockLivre.retour = stockLivre.retour + timedelta(days=14)
                                             print("Vous avez jusqu'au", stockLivre.retour, "pour rendre votre livre.")
