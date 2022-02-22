@@ -62,7 +62,7 @@ class Biblio:
 
 
     def ajoutLivre(self):
-        
+
 
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:

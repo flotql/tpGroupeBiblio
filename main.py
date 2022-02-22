@@ -11,9 +11,13 @@ bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
 bibliotheque.importLivres("./References/Livres.txt")
 
 while True:
-    nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2) / Quitter(3)\n")
-    if nouveau != "1" and nouveau != "2" and nouveau != "3":
-        print("Merci d'inscrire le chiffre 1 ou 2\n")
+    nouveau = input("Souhaiter vous:\n\t"
+                    "(1) Vous connecter \n\t"
+                    "(2) Vous inscrire \n\t"
+                    "(3) Ajouter un livre \n\t"
+                    "(4) Quitter")
+    if nouveau != "1" and nouveau != "2" and nouveau != "3" and nouveau != "4":
+        print("Merci d'inscrire le chiffre 1,2,3 ou 4\n")
     elif nouveau == "2": # l'utilisateur n'a pas de compte
         print("Démarrage de votre inscription")
         nom = input("Saisissez votre nom:\n")
@@ -24,12 +28,30 @@ while True:
                       "(2) 3-4 : 5.00 euros par mois\n\t"
                       "(3) 5-7 : 7.00 euros par mois\n\t"
                       "(4) 7-10 : 9.00 euros par mois\n\t")
-
         nouvelInscrit = User("",nom, prenom, mdp, grade)
         nouvelInscrit.DefinirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
+
+    elif nouveau == "2":  # Ajouter un livre
+        print("Démarrage de l'ajout d'un livre dans la bibliotheque")
+        type = input("S'agit-t-il:\n\t"
+                     "(1) D'un Roman\n\t"
+                     "(2) D'une BD\n\t"
+                     "(3) Quitter")
+        if nouveau != "1" and nouveau != "2" and nouveau != "3":
+            print("Merci d'inscrire le chiffre 1,2, ou 3\n")
+        elif nouveau == "1":  # Ajout Roman
+            print("Il s'agit un roman")
+            categorie = "Roman"
+            titre = input("Saisissez le titre:\n")
+            auteur = input("Saisissez l'auteur:\n")
+            langue = input("Saisissez la langue:\n")
+            bibliotheque.triLivres(bibliotheque.rayon)
+            choixGenre = input("Choisir une catégorie\n")
+
+
 
     elif nouveau == "1": # l'utilisateur a déjà un compte
         nom = input("Saisissez votre nom:\n")
@@ -226,7 +248,7 @@ while True:
 
             else:
                 pass
-    elif nouveau == "3": # QUITTER
+    elif nouveau == "4": # QUITTER
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
