@@ -32,15 +32,15 @@ while True:
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
 
-    elif nouveau == "2":  # Ajouter un livre
+    elif nouveau == "3":  # Ajouter un livre
         print("Démarrage de l'ajout d'un livre dans la bibliotheque")
         type = input("S'agit-t-il:\n\t"
                      "(1) D'un Roman\n\t"
                      "(2) D'une BD\n\t"
                      "(3) Quitter")
-        if nouveau != "1" and nouveau != "2" and nouveau != "3":
+        if type != "1" and type != "2" and type != "3":
             print("Merci d'inscrire le chiffre 1,2, ou 3\n")
-        elif nouveau == "1":  # Ajout Roman
+        elif type == "1":  # Ajout Roman
             print("Il s'agit un roman")
             categorie = "Roman"
             titre = input("Saisissez le titre:\n")
@@ -55,7 +55,7 @@ while True:
             objLivre = Livre(titre,auteur,langue,genre,categorie)
             objLivre.Definirref()
             bibliotheque.ajoutLivre(objLivre)
-        elif nouveau == "2":
+        elif type == "2":
             print("Il s'agit d'une BD")
             categorie = "BD"
             titre = input("Saisissez le titre:\n")
