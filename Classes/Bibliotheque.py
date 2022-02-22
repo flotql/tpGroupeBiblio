@@ -61,8 +61,8 @@ class Biblio:
                 self.disponible.append(objLivre)
 
 
-    # def ajoutLivre(self):
-
+    def ajoutLivre(self):
+        
 
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:
