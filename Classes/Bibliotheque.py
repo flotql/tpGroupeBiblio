@@ -32,7 +32,7 @@ class Biblio:
                         objUser.emprunts.append(i[1:-1])
                 self.utilisateurs.append(objUser)
 
-    def exportUtilisateurs(self,chemin): # voir les changements nom livres en ref
+    def exportUtilisateurs(self,chemin):
         with open(chemin, "w") as file:
             for i in self.utilisateurs:
                 file.write(str(i)+"\n")
