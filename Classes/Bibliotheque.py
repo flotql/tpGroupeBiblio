@@ -24,7 +24,6 @@ class Biblio:
         with open(chemin, "r") as lireUtilisateur:
             for i in lireUtilisateur:
                 lesUtilisateurs = i.split(" ; ")
-                # if len(lesUtilisateurs) > 2:
                 objUser = User(lesUtilisateurs[0],lesUtilisateurs[1],lesUtilisateurs[2],lesUtilisateurs[3],lesUtilisateurs[5][:-1])
                 if len(lesUtilisateurs[4]) == 2:
                     pass
@@ -32,7 +31,6 @@ class Biblio:
                     for i in (lesUtilisateurs[4][1:-1].split(", ")):
                         objUser.emprunts.append(i[1:-1])
                 self.utilisateurs.append(objUser)
-            # Ajouter chaque ref de lesutilisateurs[4] dans objUser.emprunts
 
     def exportUtilisateurs(self,chemin): # voir les changements nom livres en ref
         with open(chemin, "w") as file:
@@ -48,7 +46,7 @@ class Biblio:
             if len(lesLivres) == 8:
                 objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7][:-1])
             else:
-                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9])
+                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9][:-1])
             self.livres.append(objLivre)
             if not objLivre.genre in self.rayon:
                 self.rayon.append(objLivre.genre)
@@ -70,7 +68,7 @@ class Biblio:
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:
             for i in self.livres:
-                file.write(str(i))
+                file.write(str(i)+"\n")
 
     def afficherUtilisateurs(self):
         for i in self.utilisateurs:

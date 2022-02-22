@@ -126,7 +126,7 @@ while True:
                         else:
                             choixdulivre = int(choixdulivre -1)
                             # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
-                            i.emprunts.append(bibliotheque.disponible[choixdulivre].titre)
+                            i.emprunts.append(bibliotheque.disponible[choixdulivre].ref)
                             print("\nVous avez emprunté", i.emprunts[-1])
                             bibliotheque.disponible.pop(choixdulivre)
                             # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
@@ -223,6 +223,7 @@ while True:
 
             else:
                 pass
-    elif nouveau == "3":
+    elif nouveau == "3": # QUITTER
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
+        bibliotheque.exportLivres("./References/Livres.txt")
         break
