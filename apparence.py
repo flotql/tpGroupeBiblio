@@ -18,5 +18,7 @@ from art import *
 tprint("Bonjour",font="block-medium")
 tprint("Bienvenue dans la Bibliotheque",font="block-medium")
 
+# Explication :
+# https://pypi.org/project/art/
 # Liste des polices :
 # https://github.com/sepandhaghighi/art/blob/master/FontList.ipynb
