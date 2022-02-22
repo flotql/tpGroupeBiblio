@@ -9,13 +9,7 @@ class BD(Livre):
         self.dessinateur = dessinateur
 
     def __repr__(self):
-        return str("Voici les éléments de la BD:\n\t"
-                   "Titre: "+self.titre+"      Auteur: "+self.auteur+"\n\t"
-                   "Langue: "+self.langue+"      Genre: "+self.genre+"\n\t"
-                   "Categorie: "+self.categorie + "      Référence: "+self.ref+"\n\t"
-                   "Disponibilité: "+self.dispo + "      Date de retour: "+self.retour+"\n\t"
-                    "En couleur: "+self.couleur + "      Dessinateur: "+self.dessinateur+"\n\t")
-
+        return str(f"{self.titre} ; {self.auteur} ; {self.langue} ; {self.genre} {self.categorie} ; {self.ref} ; {self.dispo} ; {self.retour} ; {self.couleur} ; {self.dessinateur}")
 
 # b = BD("Injustice 1", "DC", "Français", "Fantastique", "BD", "ID104382", "True", "None", "True", "J Raapack")
 # print(b)
