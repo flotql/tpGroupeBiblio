@@ -179,9 +179,9 @@ while True:
                             print("**********************")
                             decompte = 0
                             titreLivreEmprunter = {}
-                            for index,livreEmprunter in enumerate(i.emprunts):
+                            for index,refEmprunter in enumerate(i.emprunts):
                                 for stockLivre in bibliotheque.livres:
-                                    if livreEmprunter == stockLivre.ref:
+                                    if refEmprunter == stockLivre.ref:
                                         print("("+str(index+1)+")", "=", stockLivre.titre,"//", "Il doit être rendu d'ici le :", stockLivre.retour)
                                         decompte += 1
                                         livreActuel = {(index+1): stockLivre.titre}
