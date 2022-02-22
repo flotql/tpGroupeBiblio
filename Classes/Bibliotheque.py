@@ -35,7 +35,6 @@ class Biblio:
     def exportUtilisateurs(self,chemin): # voir les changements nom livres en ref
         with open(chemin, "w") as file:
             for i in self.utilisateurs:
-                print(str(i))
                 file.write(str(i)+"\n")
 
     def importLivres(self,chemin):
