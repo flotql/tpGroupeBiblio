@@ -173,31 +173,29 @@ while True:
                             print("Merci d'écrire oui ou non")
                         elif prolonger.lower() == "non":
                             pass
-                        else: 
-                            # print(i.emprunts)
+                        else:
                             print("**********************")
                             print("Vos livres en cours sont :\t")
-                            for livreEmprunter in i.emprunts:
-                                # print(livreEmprunter)
-                                for stockLivre in bibliotheque.livres:
-                                    # print(stockLivre.titre)
-                                    if livreEmprunter == stockLivre.titre:
-                                        print(livreEmprunter + ".", "Il doit être rendu d'ici le :", stockLivre.retour)
                             print("**********************")
                             decompte = 0
+                            titreLivreEmprunter = {}
                             for index,livreEmprunter in enumerate(i.emprunts):
-                                print("("+str(index+1)+")", "=", livreEmprunter)
-                                decompte += 1
+                                for stockLivre in bibliotheque.livres:
+                                    if livreEmprunter == stockLivre.ref:
+                                        print("("+str(index+1)+")", "=", stockLivre.titre,"//", "Il doit être rendu d'ici le :", stockLivre.retour)
+                                        decompte += 1
+                                        livreActuel = {(index+1): stockLivre.titre}
+                                        titreLivreEmprunter.update(livreActuel)
                             livre = int(input("Quel livre souhaitez-vous prolonger ?\n"))
                             if livre > decompte or livre < 1:
                                 print("Veuillez entrer l'index correspondant à votre livre")
                             else:
-                                print(i.emprunts[livre-1])
+                                print(titreLivreEmprunter[livre])
                                 duree = input("Combien de temps souhaitez-vous prolonger ? :\n\t"
                                     "(1) 2 semaines\n\t"
                                     "(2) 1 mois\n\t")
                                 for stockLivre in bibliotheque.livres:
-                                    if i.emprunts[livre-1] == stockLivre.titre:
+                                    if titreLivreEmprunter[livre] == stockLivre.titre:
                                         stockLivre.retour = datetime.strptime(stockLivre.retour, "%Y-%m-%d")
                                         # transformation date avec heure en date sans heure
                                         stockLivre.retour = datetime.date(stockLivre.retour)
