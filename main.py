@@ -145,14 +145,18 @@ while True:
                             input('\nTaper sur entrer pour continuer')
 
                         else:
+                            titreLivreEmprunter = {}
                             for livreBiblio in bibliotheque.livres:
                                 for index, livreEmprunter in enumerate(i.emprunts):
-                                    if livreBiblio.titre == livreEmprunter:
-                                        print(("("+str(index+1)+")"), livreEmprunter, "// à rendre avant le", livreBiblio.retour)
+                                    if livreBiblio.ref == livreEmprunter:
+                                        print(("("+str(index+1)+")"), livreBiblio.titre, "// à rendre avant le", livreBiblio.retour)
+                                        livreActuel = {index: livreBiblio.titre}
+                                        titreLivreEmprunter.update(livreactuel)
+                            
                             indexLivreARendre = int(input("Quel livre voulais vous rendre?\n"))
-                            print("\nLe livre",i.emprunts[indexLivreARendre-1],"a bien été rendu")
+                            print("\nLe livre",titreLivreEmprunter[indexLivreARendre-1],"a bien été rendu")
                             for livreBiblio in bibliotheque.livres:
-                                if livreBiblio.titre == i.emprunts[indexLivreARendre-1]:
+                                if livreBiblio.ref == i.emprunts[indexLivreARendre-1]:
                                     livreBiblio.dispo = "True"
                                     livreBiblio.retour = "None"
                                     bibliotheque.disponible.append(livreBiblio)
