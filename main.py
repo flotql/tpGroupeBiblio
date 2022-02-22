@@ -135,6 +135,7 @@ while True:
                                     livreBiblio.dispo = "False"
                                     livreBiblio.retour = date.today()+timedelta(days=14)
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
+                                    # pour pouvoir exporter sans problème : passage du time en string
                                     livreBiblio.retour = str(livreBiblio.retour)
                             input('\nTaper sur entrer pour continuer')
 
@@ -191,6 +192,7 @@ while True:
                                 for stockLivre in bibliotheque.livres:
                                     if i.emprunts[livre-1] == stockLivre.titre:
                                         stockLivre.retour = datetime.strptime(stockLivre.retour, "%Y-%m-%d")
+                                        # transformation date avec heure en date sans heure
                                         stockLivre.retour = datetime.date(stockLivre.retour)
                                         if duree == "1":
                                             stockLivre.retour = stockLivre.retour + timedelta(days=14)
@@ -198,6 +200,7 @@ while True:
                                         else:
                                             stockLivre.retour = stockLivre.retour + timedelta(days=30)
                                             print("Vous avez jusqu'au", stockLivre.retour, "pour rendre votre livre.")
+                                        # pour pouvoir exporter sans problème : passage du time en string
                                         stockLivre.retour = str(stockLivre.retour)
                                 print("**********************")
 
