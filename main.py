@@ -1,10 +1,8 @@
 from datetime import *
 import sys
 sys.path.insert(1, './Classes')
-
-from Classes.Bibliotheque import Biblio
+from Classes.Bibliotheque import Biblio,BD,Livre
 from Classes.User import User
-
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
@@ -49,9 +47,37 @@ while True:
             auteur = input("Saisissez l'auteur:\n")
             langue = input("Saisissez la langue:\n")
             bibliotheque.triLivres(bibliotheque.rayon)
-            choixGenre = input("Choisir une catégorie\n")
-
-
+            choixGenre = input("Choisir un genre, si il n'est pas présent dans les choix, faites 0 \n")
+            if choixGenre == "0":
+                genre = input("Saisissez le genre de votre roman")
+            else:
+                genre = bibliotheque.rayon[int(choixGenre) - 1]
+            objLivre = Livre(titre,auteur,langue,genre,categorie)
+            objLivre.Definirref()
+            bibliotheque.ajoutLivre(objLivre)
+        elif nouveau == "2":
+            print("Il s'agit d'une BD")
+            categorie = "BD"
+            titre = input("Saisissez le titre:\n")
+            auteur = input("Saisissez l'auteur:\n")
+            langue = input("Saisissez la langue:\n")
+            bibliotheque.triLivres(bibliotheque.rayon)
+            choixGenre = input("Choisir un genre, si il n'est pas présent dans les choix, faites 0 \n")
+            if choixGenre == "0":
+                genre = input("Saisissez le genre de votre roman")
+            else:
+                genre = bibliotheque.rayon[int(choixGenre) - 1]
+            choixCouleur = input("La BD est-elle colorée:\n\t"
+                            "(1) Oui\n\t"
+                            "(2) Non")
+            if choixCouleur == "1":
+                couleur = True
+            else:
+                couleur = False
+            dessinateur = input("Saisissez le nom du dessinateur:\n")
+            objBD = BD(titre, auteur, langue, genre, categorie, couleur, dessinateur)
+            objBD.Definirref()
+            bibliotheque.ajoutLivre(objBD)
 
     elif nouveau == "1": # l'utilisateur a déjà un compte
         nom = input("Saisissez votre nom:\n")

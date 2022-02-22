@@ -3,15 +3,15 @@ from random import randrange
 
 class Livre:
 
-    def __init__(self, titre, auteur, langue, genre, categorie, ref, dispo, retour):
+    def __init__(self, titre, auteur, langue, genre, categorie):
         self.titre = titre
         self.auteur = auteur
         self.langue = langue
         self.genre = genre
         self.categorie = categorie
-        self.ref = ref
-        self.dispo = dispo
-        self.retour = retour
+        self.ref = ""
+        self.dispo = True
+        self.retour = None
 
     def Definirref(self):
         self.ref = str(self.titre[0] + self.auteur[0] + str(randrange(0, 999999)))

@@ -60,10 +60,6 @@ class Biblio:
             if objLivre.dispo == "True":
                 self.disponible.append(objLivre)
 
-
-    def ajoutLivre(self):
-
-
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:
             for i in self.livres:
@@ -114,6 +110,9 @@ class Biblio:
         self.utilisateurs.append(nouvelUtilisateur)
         print("Votre inscription est validée")
 
+    def ajoutLivre(self,nouveauLivre):
+        self.livres.append(nouveauLivre)
+        print("Le livre a bien été ajouté")
 
  #########################            TEST                 ###########################
 
