@@ -6,8 +6,8 @@ from Classes.Bibliotheque import Biblio
 from Classes.User import User
 
 from art import *
-tprint("Bonjour",font="block-medium")
-tprint("Bienvenue dans la Bibliotheque",font="block-medium")
+tprint("Bonjour",font="tarty2")
+tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
@@ -231,7 +231,8 @@ while True:
 
             else:
                 pass
-    elif nouveau == "3": # QUITTER
+    elif nouveau == "3": # QUITTER (ça réécrit par-dessus le fichier .txt)
+        tprint("Au revoir",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
