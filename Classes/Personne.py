@@ -9,10 +9,10 @@ class Personne:
     def __repr__(self):
         return str(f"{self.nom},{self.prenom},{self.mdp}")
 
-    def DefinirID(self):
+    def definirID(self):
         self.id = str(self.nom[0]+"."+self.prenom)
 
-    def ChangerMotDePasse(self, motdepasse):
+    def changerMotDePasse(self, motdepasse):
         self.mdp = motdepasse
 
 

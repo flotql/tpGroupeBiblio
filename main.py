@@ -30,7 +30,7 @@ while True:
                       "(4) 7-10 : 9.00 euros par mois\n\t")
 
         nouvelInscrit = User("",nom, prenom, mdp, grade)
-        nouvelInscrit.DefinirID()
+        nouvelInscrit.definirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
@@ -57,7 +57,7 @@ while True:
                                   "(8) Se déconnecter\n\t")
 
                     if choix == "1": # Changer de Mot de Passe
-                        i.ChangerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
+                        i.changerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
 
 
                     elif choix == "2": # Afficher les livres disponibles
@@ -220,7 +220,7 @@ while True:
                                       "(2) 3-4 : 5.00 euros par mois\n\t"
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
-                        i.ChangerGrade(grade)
+                        i.changerGrade(grade)
                         print("**********************")
                         print("Votre nouveau grade est :", i.grade)
                         print("**********************")

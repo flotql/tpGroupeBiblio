@@ -13,7 +13,7 @@ class Livre:
         self.dispo = dispo
         self.retour = retour
 
-    def Definirref(self):
+    def definirRef(self):
         self.ref = str(self.titre[0] + self.auteur[0] + str(randrange(0, 999999)))
 
     def __repr__(self):

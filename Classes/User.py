@@ -11,10 +11,10 @@ class User(Personne):
     def __repr__(self):
         return str(f"{self.id} ; {self.nom} ; {self.prenom} ; {self.mdp} ; {self.emprunts} ; {self.grade}")
 
-    def ChangerGrade(self, grade):
+    def changerGrade(self, grade):
         self.grade = grade
 
-    def EmprunterLivre(self, livre):
+    def emprunterLivre(self, livre):
         self.emprunts.append(livre)
 
 
