@@ -5,6 +5,9 @@ sys.path.insert(1, './Classes')
 from Classes.Bibliotheque import Biblio
 from Classes.User import User
 
+from art import *
+tprint("Bonjour",font="block-medium")
+tprint("Bienvenue dans la Bibliotheque",font="block-medium")
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
