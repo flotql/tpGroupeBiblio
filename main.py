@@ -6,9 +6,9 @@ from Classes.Bibliotheque import Biblio
 from Classes.User import User
 
 ## Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
-from art import *
-tprint("Bonjour : )",font="tarty2")
-tprint("Bienvenue dans la Bibliotheque",font="tarty2")
+# from art import *
+# tprint("Bonjour : )",font="tarty2")
+# tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
@@ -240,7 +240,7 @@ while True:
             else:
                 pass
     elif nouveau == "3": # QUITTER (ça réécrit par-dessus le fichier .txt)
-        tprint("Au revoir : (",font="tarty2")
+        # tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
