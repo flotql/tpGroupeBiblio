@@ -211,12 +211,18 @@ while True:
 
 
                     elif choix == "7": # Changer de Grade
+                        print("**********************")
+                        print("Votre grade actuel est :", i.grade)
+                        print("**********************")
                         grade = input("Combien de livres souhaitez vous emprunter?\n\t"
                                       "(1) 1-2 : gratuit\n\t"
                                       "(2) 3-4 : 5.00 euros par mois\n\t"
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
                         i.ChangerGrade(grade)
+                        print("**********************")
+                        print("Votre nouveau grade est :", i.grade)
+                        print("**********************")
 
 
                     elif choix == "8": # Se Déconnecter
