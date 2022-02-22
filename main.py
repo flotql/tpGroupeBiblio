@@ -149,8 +149,8 @@ while True:
 
                         else:
                             titreLivreEmprunter = {}
-                            for livreBiblio in bibliotheque.livres:
-                                for index, livreEmprunter in enumerate(i.emprunts):
+                            for index, livreEmprunter in enumerate(i.emprunts):
+                                for livreBiblio in bibliotheque.livres:
                                     if livreBiblio.ref == livreEmprunter:
                                         print(("("+str(index+1)+")"), livreBiblio.titre, "// à rendre avant le", livreBiblio.retour)
                                         livreActuel = {index: livreBiblio.titre}
