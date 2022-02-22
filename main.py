@@ -13,7 +13,7 @@ while True:
                     "(1) Vous connecter \n\t"
                     "(2) Vous inscrire \n\t"
                     "(3) Ajouter un livre \n\t"
-                    "(4) Quitter")
+                    "(4) Quitter\n")
     if nouveau != "1" and nouveau != "2" and nouveau != "3" and nouveau != "4":
         print("Merci d'inscrire le chiffre 1,2,3 ou 4\n")
     elif nouveau == "2": # l'utilisateur n'a pas de compte
