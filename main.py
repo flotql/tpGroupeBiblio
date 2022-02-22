@@ -131,7 +131,7 @@ while True:
                             bibliotheque.disponible.pop(choixdulivre)
                             # enumerer les livres de la bibliotheque et si le titre est identique a celui de la liste emprunt de l'utilisateur, le passer en indisponible avec une date de retour.
                             for livreBiblio in bibliotheque.livres:
-                                if livreBiblio.titre == i.emprunts[-1]:
+                                if livreBiblio.ref == i.emprunts[-1]:
                                     livreBiblio.dispo = "False"
                                     livreBiblio.retour = date.today()+timedelta(days=14)
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
@@ -151,7 +151,7 @@ while True:
                                     if livreBiblio.ref == livreEmprunter:
                                         print(("("+str(index+1)+")"), livreBiblio.titre, "// à rendre avant le", livreBiblio.retour)
                                         livreActuel = {index: livreBiblio.titre}
-                                        titreLivreEmprunter.update(livreactuel)
+                                        titreLivreEmprunter.update(livreActuel)
                             
                             indexLivreARendre = int(input("Quel livre voulais vous rendre?\n"))
                             print("\nLe livre",titreLivreEmprunter[indexLivreARendre-1],"a bien été rendu")
