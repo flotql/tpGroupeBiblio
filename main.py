@@ -6,7 +6,7 @@ from Classes.Bibliotheque import Biblio
 from Classes.User import User
 
 from art import *
-tprint("Bonjour",font="tarty2")
+tprint("Bonjour : )",font="tarty2")
 tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
 bibliotheque = Biblio()
@@ -223,7 +223,7 @@ while True:
                         print("**********************")
                         print("Votre nouveau grade est :", i.grade)
                         print("**********************")
-                        input('\nTaper sur Entrer pour continuer')
+                        input('Taper sur Entrer pour continuer')
 
 
                     elif choix == "8": # Se Déconnecter
@@ -239,7 +239,7 @@ while True:
             else:
                 pass
     elif nouveau == "3": # QUITTER (ça réécrit par-dessus le fichier .txt)
-        tprint("Au revoir",font="tarty2")
+        tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
