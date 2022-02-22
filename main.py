@@ -140,12 +140,12 @@ while True:
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
                                     # pour pouvoir exporter sans problème : passage du time en string
                                     livreBiblio.retour = str(livreBiblio.retour)
-                            input('\nTaper sur entrer pour continuer')
+                            input('\nTaper sur Entrer pour continuer')
 
                     elif choix == "5": # Rendre un livre
                         if i.emprunts == []:
                             print("Vous n'avez emprunté aucun livre.")
-                            input('\nTaper sur entrer pour continuer')
+                            input('\nTaper sur Entrer pour continuer')
 
                         else:
                             titreLivreEmprunter = {}
@@ -164,7 +164,7 @@ while True:
                                     livreBiblio.retour = "None"
                                     bibliotheque.disponible.append(livreBiblio)
                             i.emprunts.pop(indexLivreARendre - 1)
-                            input('\nTaper sur entrer pour continuer')
+                            input('\nTaper sur Entrer pour continuer')
 
 
                     elif choix == "6": # Prolonger un Emprunt
@@ -223,6 +223,7 @@ while True:
                         print("**********************")
                         print("Votre nouveau grade est :", i.grade)
                         print("**********************")
+                        input('\nTaper sur Entrer pour continuer')
 
 
                     elif choix == "8": # Se Déconnecter
