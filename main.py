@@ -55,7 +55,7 @@ while True:
             objLivre = Livre(titre,auteur,langue,genre,categorie)
             objLivre.Definirref()
             bibliotheque.ajoutLivre(objLivre)
-        elif type == "2":
+        elif type == "2": # Ajout BD
             print("Il s'agit d'une BD")
             categorie = "BD"
             titre = input("Saisissez le titre:\n")
