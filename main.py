@@ -5,7 +5,7 @@ sys.path.insert(1, './Classes')
 from Classes.Bibliotheque import Biblio
 from Classes.User import User
 
-## Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
+# Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 # from art import *
 # tprint("Bonjour : )",font="tarty2")
 # tprint("Bienvenue dans la Bibliotheque",font="tarty2")
