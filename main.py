@@ -126,9 +126,7 @@ while True:
                         for index, livreliste in enumerate(bibliotheque.disponible):
                             print("("+str(index+1)+")", livreliste.titre)
                         choixdulivre = int(input("\nQuel livre souhaitez-vous emprunter ? Tapez 0 pour quitter\n"))
-                        if choixdulivre == 0:
-                            pass
-                        else:
+                        if choixdulivre != 0:
                             choixdulivre = int(choixdulivre -1)
                             # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
                             i.emprunts.append(bibliotheque.disponible[choixdulivre].ref)
@@ -142,7 +140,9 @@ while True:
                                     print("Il faudra rendre le livre avant le", livreBiblio.retour)
                                     # pour pouvoir exporter sans problème : passage du time en string
                                     livreBiblio.retour = str(livreBiblio.retour)
+                                    break
                             input('\nTaper sur Entrer pour continuer')
+
 
                     elif choix == "5": # Rendre un livre
                         if i.emprunts == []:
@@ -155,11 +155,11 @@ while True:
                                 for livreBiblio in bibliotheque.livres:
                                     if livreBiblio.ref == livreEmprunter:
                                         print(("("+str(index+1)+")"), livreBiblio.titre, "// à rendre avant le", livreBiblio.retour)
-                                        livreActuel = {index: livreBiblio.titre}
-                                        titreLivreEmprunter.update(livreActuel)
+                                        titreLivreEmprunter[index]=livreBiblio.titre
                             
                             indexLivreARendre = int(input("Quel livre voulais vous rendre?\n"))
                             print("\nLe livre",titreLivreEmprunter[indexLivreARendre-1],"a bien été rendu")
+                            #i.emprunts[indexLivreARendre-1].dispo= "True"
                             for livreBiblio in bibliotheque.livres:
                                 if livreBiblio.ref == i.emprunts[indexLivreARendre-1]:
                                     livreBiblio.dispo = "True"

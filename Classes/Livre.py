@@ -17,7 +17,7 @@ class Livre:
         self.ref = str(self.titre[0] + self.auteur[0] + str(randrange(0, 999999)))
 
     def __repr__(self):
-        return str(f"{self.titre} ; {self.auteur} ; {self.langue} ; {self.genre} ; {self.categorie} ; {self.ref} ; {self.dispo} ; {self.retour}")
+        return str(f"{self.titre} ; {self.auteur} ; {self.langue} ; {self.genre} ; {self.categorie} ; {self.ref} ; {self.dispo} ; {str(self.retour)}")
 
 # a = Livre("Harry Potter 1", "J.K Rowling", "Français", "Fantastique", "Roman", "HJ135203", "True", "None")
 #
