@@ -27,18 +27,18 @@ FONCTIONNALITES DE BASE :
 
 CLASS : 
 - Personne / User (Raph)
-    - Personne : id = 1ere lettre nom . prenom (tout en minuscule)
-    - User : Faire un dictionnaire avec la liste des differents grades et une liste comprennant tous les livres empruntrer par         l'utilisateur 
+    - Personne : Definir ID et changement de mdp
+    - User : Gestion Grade et Emprunt
 - Livre / BD (Gaetan)
-    - Livre : 
+    - Livre : Definir Ref
     - BD : 
 - Bibliotheque (Florent)
-
+    Import export utilisateurs et livres / affichage livres 
+    
 Functions : ()
 
 Main : () 
 - il doit etre le plus epure possible
-
 
 
 FONCTIONS FUTUR:
@@ -47,5 +47,6 @@ User
 - Grade : 
     - monte en grade avec un nombre de livre emprunter (garde le meme prix)
     - monte en grade en payant l'abonnement sup
-
+    - désinscription
+Regex
 - Class : admin (heritage personne)
