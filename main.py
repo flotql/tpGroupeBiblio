@@ -4,6 +4,7 @@ sys.path.insert(1, './Classes')
 from Classes.Bibliotheque import Biblio,BD,Livre
 from Classes.User import User
 from art import *
+import re
 
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
@@ -162,9 +163,17 @@ while True:
                                       "(4) Par genre\n\t")
                         if choix == "1":
                             choix = input(" Quel livre cherchez-vous?\n")
+                            # str = choix
+                            # if any(re.findall(r'a|b|c', str, re.IGNORECASE)):
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("titre", choix)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            # else:
+                            #     print("**********************")
+                            #     print("Ce titre n'existe pas !")
+                            #     print("**********************")
+                            #     input('Taper sur Entrer pour continuer')
+
                         elif choix == "2":
                             choix = input(" Quel auteur cherchez-vous?\n")
                             print(f"Voici les livres comportant {choix} :\t")
@@ -180,6 +189,11 @@ while True:
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("genre", choix)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
+                        else:
+                            print("**********************")
+                            print("Veuillez faire un choix entre 1 et 4 !")
+                            print("**********************")
+                            input('Taper sur Entrer pour continuer')
 
                     elif choix == "4": # Emprunter un livre
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir

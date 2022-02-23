@@ -90,22 +90,33 @@ class Biblio:
                     print(i.titre)
 
     def rechercheLivre(self,selection,valeur):
+        livres = []
         if selection == "titre":
             for j in self.titre:
                 if valeur.lower() in j.lower():
                     print(j)
+                    livres.append(j)
         if selection == "auteur":
             for j in self.auteur:
                 if valeur.lower() in j.lower():
                     print (j)
+                    livres.append(j)
         if selection == "categorie":
             for j in self.categorie:
                 if valeur.lower() in j.lower():
                     print (j)
+                    livres.append(j)
         if selection == "genre":
             for j in self.rayon:
                 if valeur.lower() in j.lower():
                     print (j)
+                    livres.append(j)
+        if livres == []:
+            print("Aucun livre ne correspond")
+        else:
+            for i in livres:
+                print(i)
+
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
@@ -114,6 +125,7 @@ class Biblio:
     def ajoutLivre(self,nouveauLivre):
         self.livres.append(nouveauLivre)
         print("Le livre a bien été ajouté")
+
 
  #########################            TEST                 ###########################
 
