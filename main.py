@@ -1,14 +1,15 @@
 from datetime import *
 import sys
 sys.path.insert(1, './Classes')
-
-from Classes.Bibliotheque import Biblio
+from Classes.Bibliotheque import Biblio,BD,Livre
 from Classes.User import User
+from art import *
+import re
 
-## Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
-# from art import *
-# tprint("Bonjour : )",font="tarty2")
-# tprint("Bienvenue dans la Bibliotheque",font="tarty2")
+# Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
+
+tprint("Bonjour : )",font="tarty2")
+tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
@@ -16,9 +17,13 @@ bibliotheque.importLivres("./References/Livres.txt")
 
 while True:
     connecter = False
-    nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2) / Quitter(3)\n")
-    if nouveau != "1" and nouveau != "2" and nouveau != "3":
-        print("Merci d'inscrire le chiffre 1 ou 2\n")
+    nouveau = input("Souhaitez vous:\n\t"
+                    "(1) Vous connecter \n\t"
+                    "(2) Vous inscrire \n\t"
+                    "(3) Ajouter un livre \n\t"
+                    "(4) Quitter\n")
+    if nouveau != "1" and nouveau != "2" and nouveau != "3" and nouveau != "4":
+        print("Merci d'inscrire le chiffre 1,2,3 ou 4\n")
     elif nouveau == "2": # l'utilisateur n'a pas de compte
         print("Démarrage de votre inscription")
         nom = input("Saisissez votre nom:\n")
@@ -29,12 +34,58 @@ while True:
                       "(2) 3-4 : 5.00 euros par mois\n\t"
                       "(3) 5-7 : 7.00 euros par mois\n\t"
                       "(4) 7-10 : 9.00 euros par mois\n\t")
-
         nouvelInscrit = User("",nom, prenom, mdp, grade)
         nouvelInscrit.definirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
+
+    elif nouveau == "3":  # Ajouter un livre
+        print("Démarrage de l'ajout d'un livre dans la bibliotheque")
+        type = input("S'agit-t-il:\n\t"
+                     "(1) D'un Roman\n\t"
+                     "(2) D'une BD\n\t"
+                     "(3) Quitter")
+        if type != "1" and type != "2" and type != "3":
+            print("Merci d'inscrire le chiffre 1,2, ou 3\n")
+        elif type == "1":  # Ajout Roman
+            print("Il s'agit un roman")
+            categorie = "Roman"
+            titre = input("Saisissez le titre:\n")
+            auteur = input("Saisissez l'auteur:\n")
+            langue = input("Saisissez la langue:\n")
+            bibliotheque.triLivres(bibliotheque.rayon)
+            choixGenre = input("Choisir un genre, si il n'est pas présent dans les choix, faites 0 \n")
+            if choixGenre == "0":
+                genre = input("Saisissez le genre de votre roman")
+            else:
+                genre = bibliotheque.rayon[int(choixGenre) - 1]
+            objLivre = Livre(titre,auteur,langue,genre,categorie)
+            objLivre.Definirref()
+            bibliotheque.ajoutLivre(objLivre)
+        elif type == "2": # Ajout BD
+            print("Il s'agit d'une BD")
+            categorie = "BD"
+            titre = input("Saisissez le titre:\n")
+            auteur = input("Saisissez l'auteur:\n")
+            langue = input("Saisissez la langue:\n")
+            bibliotheque.triLivres(bibliotheque.rayon)
+            choixGenre = input("Choisir un genre, si il n'est pas présent dans les choix, faites 0 \n")
+            if choixGenre == "0":
+                genre = input("Saisissez le genre de votre roman")
+            else:
+                genre = bibliotheque.rayon[int(choixGenre) - 1]
+            choixCouleur = input("La BD est-elle colorée:\n\t"
+                            "(1) Oui\n\t"
+                            "(2) Non")
+            if choixCouleur == "1":
+                couleur = True
+            else:
+                couleur = False
+            dessinateur = input("Saisissez le nom du dessinateur:\n")
+            objBD = BD(titre, auteur, langue, genre, categorie, couleur, dessinateur)
+            objBD.Definirref()
+            bibliotheque.ajoutLivre(objBD)
 
     elif nouveau == "1": # l'utilisateur a déjà un compte
         nom = input("Saisissez votre nom:\n")
@@ -59,7 +110,6 @@ while True:
                     if choix == "1": # Changer de Mot de Passe
                         i.changerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
 
-
                     elif choix == "2": # Afficher les livres disponibles
                         choix = input("Recherchez :\n\t"
                                       "(1) Par auteur\n\t"
@@ -69,28 +119,41 @@ while True:
                         if choix == "1":
                             bibliotheque.triLivres(bibliotheque.auteur)
                             choix = input("Choisir un auteur\n")
-                            print("Voici les livres disponibles de", bibliotheque.auteur[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("auteur", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            if "0" < choix <= str(len(bibliotheque.auteur)):
+                                print("Voici les livres disponibles de", bibliotheque.auteur[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("auteur", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.auteur)))
                         elif choix == "2":
                             bibliotheque.triLivres(bibliotheque.rayon)
                             choix = input("Choisir un genre\n")
-                            print("Voici les livres disponibles du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("genre", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            if "0" < choix <= str(len(bibliotheque.rayon)):
+                                print("Voici les livres disponibles du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("genre", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.rayon)))
                         elif choix == "3":
                             bibliotheque.triLivres(bibliotheque.categorie)
                             choix = input("Choisir une catégorie\n")
-                            print("Voici les livres disponibles de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("categorie", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            if "0" < choix <= str(len(bibliotheque.categorie)):
+                                print("Voici les livres disponibles de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("categorie", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.categorie)))
                         elif choix == "4":
                             bibliotheque.triLivres(bibliotheque.langue)
                             choix = input("Choisir la langue\n")
-                            print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("langue", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
-
+                            if "0" < choix <= str(len(bibliotheque.langue)):
+                                print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("langue", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.langue)))
+                        else:
+                            print("Merci d'indiquer un chiffre entre 1 et 4")
 
                     elif choix == "3":  # Recherche ciblée
                         choix = input("Recherchez :\n\t"
@@ -100,9 +163,17 @@ while True:
                                       "(4) Par genre\n\t")
                         if choix == "1":
                             choix = input(" Quel livre cherchez-vous?\n")
+                            # str = choix
+                            # if any(re.findall(r'a|b|c', str, re.IGNORECASE)):
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("titre", choix)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            # else:
+                            #     print("**********************")
+                            #     print("Ce titre n'existe pas !")
+                            #     print("**********************")
+                            #     input('Taper sur Entrer pour continuer')
+
                         elif choix == "2":
                             choix = input(" Quel auteur cherchez-vous?\n")
                             print(f"Voici les livres comportant {choix} :\t")
@@ -118,7 +189,11 @@ while True:
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("genre", choix)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
-
+                        else:
+                            print("**********************")
+                            print("Veuillez faire un choix entre 1 et 4 !")
+                            print("**********************")
+                            input('Taper sur Entrer pour continuer')
 
                     elif choix == "4": # Emprunter un livre
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
@@ -167,7 +242,6 @@ while True:
                             i.emprunts.pop(indexLivreARendre - 1)
                             input('\nTaper sur Entrer pour continuer')
 
-
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
                         if prolonger.lower() != "non" and prolonger.lower() != "oui":
@@ -210,7 +284,6 @@ while True:
                                         stockLivre.retour = str(stockLivre.retour)
                                 print("**********************")
 
-
                     elif choix == "7": # Changer de Grade
                         print("**********************")
                         print("Votre grade actuel est :", i.grade)
@@ -220,12 +293,17 @@ while True:
                                       "(2) 3-4 : 5.00 euros par mois\n\t"
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
-                        i.changerGrade(grade)
-                        print("**********************")
-                        print("Votre nouveau grade est :", i.grade)
-                        print("**********************")
-                        input('Taper sur Entrer pour continuer')
-
+                        i.ChangerGrade(grade)
+                        if "0" < i.grade <= "4":
+                            print("**********************")
+                            print("Votre nouveau grade est :", i.grade)
+                            print("**********************")
+                            input('Taper sur Entrer pour continuer')
+                        else:
+                            print("**********************")
+                            print("Veuillez entrer un grade compris entre 1 et 4 !")
+                            print("**********************")
+                            input('Taper sur Entrer pour continuer')
 
                     elif choix == "8": # Se Déconnecter
                         continuer = False

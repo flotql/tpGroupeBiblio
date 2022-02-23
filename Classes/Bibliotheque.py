@@ -43,9 +43,9 @@ class Biblio:
         for i in lireLivres:
             lesLivres = i.split(" ; ")
             if len(lesLivres) == 8:
-                objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7][:-1])
+                objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6], lesLivres[7][:-1])
             else:
-                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9][:-1])
+                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[8],lesLivres[9][:-1],lesLivres[5],lesLivres[6], lesLivres[7])
             self.livres.append(objLivre)
             if not objLivre.genre in self.rayon:
                 self.rayon.append(objLivre.genre)
@@ -65,6 +65,7 @@ class Biblio:
         with open(chemin, "w") as file:
             for i in self.livres:
                 file.write(str(i)+"\n")
+
 
     def afficherUtilisateurs(self):
         for i in self.utilisateurs:
@@ -90,26 +91,41 @@ class Biblio:
                     print(i.titre)
 
     def rechercheLivre(self,selection,valeur):
+        livres = []
         if selection == "titre":
             for j in self.titre:
                 if valeur.lower() in j.lower():
                     print(j)
+                    livres.append(j)
         if selection == "auteur":
             for j in self.auteur:
                 if valeur.lower() in j.lower():
                     print (j)
+                    livres.append(j)
         if selection == "categorie":
             for j in self.categorie:
                 if valeur.lower() in j.lower():
                     print (j)
+                    livres.append(j)
         if selection == "genre":
             for j in self.rayon:
                 if valeur.lower() in j.lower():
                     print (j)
+                    livres.append(j)
+        if livres == []:
+            print("Aucun livre ne correspond")
+        else:
+            for i in livres:
+                print(i)
+
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
         self.utilisateurs.append(nouvelUtilisateur)
         print("Votre inscription est validée")
+
+    def ajoutLivre(self,nouveauLivre):
+        self.livres.append(nouveauLivre)
+        print("Le livre a bien été ajouté")
 
 
  #########################            TEST                 ###########################
