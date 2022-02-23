@@ -139,6 +139,8 @@ while True:
                             print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("langue", int(choix) - 1)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
+                        else:
+                            print("Merci d'indiquer un chiffre entre 1 et 4")
 
                     elif choix == "3":  # Recherche ciblée
                         choix = input("Recherchez :\n\t"
