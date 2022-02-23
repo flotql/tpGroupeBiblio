@@ -6,8 +6,8 @@ Nomenclature
 
 STYLE D'ECRITURE
 
-    Class en PascalCase
-    Functions, Method, Attributs, Variables,...  en CamelCase
+- Class en PascalCase
+- Functions, Method, Attributs, Variables,...  en CamelCase
 
 INSTALLATION ART
 
