@@ -203,7 +203,7 @@ while True:
                                         if duree == "1":
                                             stockLivre.retour = stockLivre.retour + timedelta(days=14)
                                             print("Vous avez jusqu'au", stockLivre.retour, "pour rendre votre livre.")
-                                        else:
+                                        if duree == "2":
                                             stockLivre.retour = stockLivre.retour + timedelta(days=30)
                                             print("Vous avez jusqu'au", stockLivre.retour, "pour rendre votre livre.")
                                         # pour pouvoir exporter sans problème : passage du time en string
