@@ -41,7 +41,6 @@ while True:
         prenom = input("Saisissez votre prénom:\n")
         mdp = input("Saisissez votre mdp:\n")
         for i in bibliotheque.utilisateurs:
-
             if i.nom == nom and i.prenom == prenom and i.mdp == mdp:
                 print("Connection réussie")
                 connecter = True
