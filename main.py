@@ -194,7 +194,6 @@ while True:
                         if i.emprunts == []:
                             print("Vous n'avez emprunté aucun livre.")
                             input('\nTaper sur Entrer pour continuer')
-
                         else:
                             titreLivreEmprunter = {}
                             for index, livreEmprunter in enumerate(i.emprunts):
