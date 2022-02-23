@@ -59,10 +59,7 @@ class Biblio:
                 self.titre.append(objLivre.titre)
             if objLivre.dispo == "True":
                 self.disponible.append(objLivre)
-
-
-    # def ajoutLivre(self):
-
+        openLivres.close()
 
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:

@@ -15,6 +15,7 @@ bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
 bibliotheque.importLivres("./References/Livres.txt")
 
 while True:
+    connecter = False
     nouveau = input("Avez vous déjà un compte? Oui(1) / Non(2) / Quitter(3)\n")
     if nouveau != "1" and nouveau != "2" and nouveau != "3":
         print("Merci d'inscrire le chiffre 1 ou 2\n")
@@ -39,11 +40,11 @@ while True:
         nom = input("Saisissez votre nom:\n")
         prenom = input("Saisissez votre prénom:\n")
         mdp = input("Saisissez votre mdp:\n")
-
         for i in bibliotheque.utilisateurs:
 
             if i.nom == nom and i.prenom == prenom and i.mdp == mdp:
                 print("Connection réussie")
+                connecter = True
                 continuer = True
                 while continuer:
                     choix = input("Vous désirez :\n\t"
@@ -232,13 +233,10 @@ while True:
                         print("Déconnexion réussie")
                     else:
                         print("Inscrire un chiffre entre 1 et 8")
+                break
+        if not connecter:
+            print("Erreur d'identification")
 
-
-            elif (i.nom != nom and i.prenom == prenom and i.mdp == mdp) or (i.nom == nom and i.prenom != prenom and i.mdp == mdp) or (i.nom == nom and i.prenom == prenom and i.mdp != mdp):
-                print("Erreur d'indentification")
-
-            else:
-                pass
     elif nouveau == "3": # QUITTER (ça réécrit par-dessus le fichier .txt)
         # tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
