@@ -9,6 +9,10 @@ STYLE D'ECRITURE
     Class en PascalCase
     Functions, Method, Attributs, Variables,...  en CamelCase
 
+INSTALLATION ART
+
+Dans le terminal:  python -m ensurepip 
+                   python -m pip install art
 
 QUOI FAIRE
 
