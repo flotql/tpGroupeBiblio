@@ -43,9 +43,9 @@ class Biblio:
         for i in lireLivres:
             lesLivres = i.split(" ; ")
             if len(lesLivres) == 8:
-                objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7][:-1])
+                objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6], lesLivres[7][:-1])
             else:
-                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6],lesLivres[7],lesLivres[8],lesLivres[9][:-1])
+                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[8],lesLivres[9][:-1],lesLivres[5],lesLivres[6], lesLivres[7])
             self.livres.append(objLivre)
             if not objLivre.genre in self.rayon:
                 self.rayon.append(objLivre.genre)
@@ -60,14 +60,11 @@ class Biblio:
             if objLivre.dispo == "True":
                 self.disponible.append(objLivre)
 
-
-    # def ajoutLivre(self):
-
-
     def exportLivres(self,chemin):
         with open(chemin, "w") as file:
             for i in self.livres:
                 file.write(str(i)+"\n")
+
 
     def afficherUtilisateurs(self):
         for i in self.utilisateurs:
@@ -114,6 +111,9 @@ class Biblio:
         self.utilisateurs.append(nouvelUtilisateur)
         print("Votre inscription est validée")
 
+    def ajoutLivre(self,nouveauLivre):
+        self.livres.append(nouveauLivre)
+        print("Le livre a bien été ajouté")
 
  #########################            TEST                 ###########################
 
