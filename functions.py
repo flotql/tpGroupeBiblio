@@ -1,8 +1,15 @@
+from Classes.Bibliotheque import Biblio,BD,Livre
+sys.path.insert(1, './Classes')
+bibliotheque = Biblio()
 
 
+def AffichageLivres(selection):
+    bibliotheque.triLivres(bibliotheque.selection)
+    choix = input("Choisir un auteur\n")
+    print("Voici les livres disponibles de", bibliotheque.selection[int(choix) - 1], ":\t")
+    bibliotheque.affichageTri(str(selection), int(choix) - 1)
+    input("\nAppuyez sur \"entrer\" pour continuer\n")
 
-# def VerificationDoublon(choix):
-#     noDoublon = {}
-#     for i in enumerate(choix):
-#         noDoublon[choix[i][0]] = [choix[i][0], choix[i][1], choix[i][2],
-#                                               choix[i][3], choix[i][4], choix[i][5]]
+
+def InterfaceUtilisateur():
+    
