@@ -3,11 +3,12 @@ import sys
 sys.path.insert(1, './Classes')
 from Classes.Bibliotheque import Biblio,BD,Livre
 from Classes.User import User
+from art import *
 
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
-# from art import *
-# tprint("Bonjour : )",font="tarty2")
-# tprint("Bienvenue dans la Bibliotheque",font="tarty2")
+
+tprint("Bonjour : )",font="tarty2")
+tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
@@ -108,7 +109,6 @@ while True:
                     if choix == "1": # Changer de Mot de Passe
                         i.ChangerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
 
-
                     elif choix == "2": # Afficher les livres disponibles
                         choix = input("Recherchez :\n\t"
                                       "(1) Par auteur\n\t"
@@ -140,7 +140,6 @@ while True:
                             bibliotheque.affichageTri("langue", int(choix) - 1)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
 
-
                     elif choix == "3":  # Recherche ciblée
                         choix = input("Recherchez :\n\t"
                                       "(1) Par titre\n\t"
@@ -167,7 +166,6 @@ while True:
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("genre", choix)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
-
 
                     elif choix == "4": # Emprunter un livre
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
@@ -215,7 +213,6 @@ while True:
                                     bibliotheque.disponible.append(livreBiblio)
                             i.emprunts.pop(indexLivreARendre - 1)
                             input('\nTaper sur Entrer pour continuer')
-
 
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
@@ -289,7 +286,7 @@ while True:
             else:
                 pass
     elif nouveau == "4": # QUITTER
-        # tprint("Au revoir : (",font="tarty2")
+        tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
