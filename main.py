@@ -15,7 +15,7 @@ bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
 bibliotheque.importLivres("./References/Livres.txt")
 
 while True:
-    nouveau = input("Souhaiter vous:\n\t"
+    nouveau = input("Souhaitez vous:\n\t"
                     "(1) Vous connecter \n\t"
                     "(2) Vous inscrire \n\t"
                     "(3) Ajouter un livre \n\t"
@@ -268,10 +268,16 @@ while True:
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
                         i.ChangerGrade(grade)
-                        print("**********************")
-                        print("Votre nouveau grade est :", i.grade)
-                        print("**********************")
-                        input('Taper sur Entrer pour continuer')
+                        if "0" < i.grade <= "4":
+                            print("**********************")
+                            print("Votre nouveau grade est :", i.grade)
+                            print("**********************")
+                            input('Taper sur Entrer pour continuer')
+                        else:
+                            print("**********************")
+                            print("Veuillez entrer un grade compris entre 1 et 4 !")
+                            print("**********************")
+                            input('Taper sur Entrer pour continuer')
 
                     elif choix == "8": # Se Déconnecter
                         continuer = False
