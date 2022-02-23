@@ -118,27 +118,39 @@ while True:
                         if choix == "1":
                             bibliotheque.triLivres(bibliotheque.auteur)
                             choix = input("Choisir un auteur\n")
-                            print("Voici les livres disponibles de", bibliotheque.auteur[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("auteur", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            if "0" < choix <= str(len(bibliotheque.auteur)):
+                                print("Voici les livres disponibles de", bibliotheque.auteur[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("auteur", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.auteur)))
                         elif choix == "2":
                             bibliotheque.triLivres(bibliotheque.rayon)
                             choix = input("Choisir un genre\n")
-                            print("Voici les livres disponibles du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("genre", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            if "0" < choix <= str(len(bibliotheque.rayon)):
+                                print("Voici les livres disponibles du rayon", bibliotheque.rayon[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("genre", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.rayon)))
                         elif choix == "3":
                             bibliotheque.triLivres(bibliotheque.categorie)
                             choix = input("Choisir une catégorie\n")
-                            print("Voici les livres disponibles de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("categorie", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            if "0" < choix <= str(len(bibliotheque.categorie)):
+                                print("Voici les livres disponibles de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("categorie", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.categorie)))
                         elif choix == "4":
                             bibliotheque.triLivres(bibliotheque.langue)
                             choix = input("Choisir la langue\n")
-                            print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
-                            bibliotheque.affichageTri("langue", int(choix) - 1)
-                            input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            if "0" < choix <= str(len(bibliotheque.langue)):
+                                print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
+                                bibliotheque.affichageTri("langue", int(choix) - 1)
+                                input("\nAppuyez sur \"entrer\" pour continuer\n")
+                            else:
+                                print("Merci d'indiquer un chiffre entre 1 et", str(len(bibliotheque.langue)))
                         else:
                             print("Merci d'indiquer un chiffre entre 1 et 4")
 
