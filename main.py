@@ -256,7 +256,6 @@ while True:
                                         stockLivre.retour = str(stockLivre.retour)
                                 print("**********************")
 
-
                     elif choix == "7": # Changer de Grade
                         print("**********************")
                         print("Votre grade actuel est :", i.grade)
@@ -272,13 +271,11 @@ while True:
                         print("**********************")
                         input('Taper sur Entrer pour continuer')
 
-
                     elif choix == "8": # Se Déconnecter
                         continuer = False
                         print("Déconnexion réussie")
                     else:
                         print("Inscrire un chiffre entre 1 et 8")
-
 
             elif (i.nom != nom and i.prenom == prenom and i.mdp == mdp) or (i.nom == nom and i.prenom != prenom and i.mdp == mdp) or (i.nom == nom and i.prenom == prenom and i.mdp != mdp):
                 print("Erreur d'indentification")
