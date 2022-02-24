@@ -1,6 +1,8 @@
-from Personne import *
-
-
+import sys
+import pathlib
+origine = str(pathlib.Path(__file__).parent.resolve())
+sys.path.append(origine + "../Classes")
+from Classes.Personne import *
 class User(Personne):
 
     def __init__(self, id,  nom, prenom, mdp, grade):

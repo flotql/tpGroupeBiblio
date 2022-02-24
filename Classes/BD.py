@@ -1,4 +1,9 @@
-from Livre import Livre
+import sys
+import pathlib
+origine = str(pathlib.Path(__file__).parent.resolve())
+sys.path.append(origine + "../Classes")
+
+from Classes.Livre import Livre
 
 
 class BD(Livre):

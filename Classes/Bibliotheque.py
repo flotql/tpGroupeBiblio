@@ -1,6 +1,10 @@
-from Livre import *
-from BD import *
-from User import *
+import sys
+import pathlib
+origine = str(pathlib.Path(__file__).parent.resolve())
+sys.path.append(origine + "../Classes")
+
+from Classes.BD import *
+from Classes.User import *
 
 
 class Biblio:

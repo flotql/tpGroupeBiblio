@@ -1,19 +1,24 @@
 from datetime import *
+import getpass
 import sys
-sys.path.insert(1, './Classes')
+from functions import *
+import pathlib
+chemin = str(pathlib.Path(__file__).parent.resolve())
+sys.path.append(chemin + './Classes')
+sys.path.append(chemin + './artT')
+sys.path.append(chemin + './References')
 from Classes.Bibliotheque import Biblio,BD,Livre
 from Classes.User import User
-from art import *
+from artT.art import *
 import re
-
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
 tprint("Bonjour : )",font="tarty2")
 tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
 bibliotheque = Biblio()
-bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
-bibliotheque.importLivres("./References/Livres.txt")
+bibliotheque.importUtilisateurs(chemin + "/References/Utilisateurs.txt")
+bibliotheque.importLivres(chemin + "/References/Livres.txt")
 
 while True:
     connecter = False
@@ -30,12 +35,13 @@ while True:
         prenom = input("Saisissez votre prénom:\n")
         testMDP = True
         while testMDP:
-            mdp = input("Saisissez votre mdp:\n")
-            confMdp = input("Saisissez une seconde fois votre mdp:\n")
-            if mdp == confMdp:
-                testMDP = False
+            mdp = getpass.getpass('Indiquez le mdp (votre saisie ne s\'affichera pas):')
+            # mdp = "test"
+            confMdp = getpass.getpass('Ecrivez le mot de passe une seconde fois:\n')
+            if not verifMDP(mdp,confMdp):
+                print("Erreur de saisie")
             else:
-                print("Les deux mdp ne correspondent pas, veuillez réessayer")
+                testMDP = False
         grade = input("Combien de livres souhaitez vous emprunter?\n\t"
                       "(1) 1-2 : gratuit\n\t"
                       "(2) 3-4 : 5.00 euros par mois\n\t"
@@ -68,7 +74,7 @@ while True:
             else:
                 genre = bibliotheque.rayon[int(choixGenre) - 1]
             objLivre = Livre(titre,auteur,langue,genre,categorie)
-            objLivre.Definirref()
+            objLivre.definirRef()
             bibliotheque.ajoutLivre(objLivre)
         elif type == "2": # Ajout BD
             print("Il s'agit d'une BD")
@@ -114,7 +120,41 @@ while True:
                                   "(8) Se déconnecter\n\t")
 
                     if choix == "1": # Changer de Mot de Passe
-                        i.changerMotDePasse(input("Indiquez votre nouveau mot de passe\n"))
+                        compteur = 0
+                        tstMDP = True
+                        while not verifMDP(input("Indiquez le mot de passe actuel\n"),i.mdp):
+                            print("Erreur de saisie")
+                            compteur += 1
+                            if compteur >3:
+                                print("Trop d'erreurs")
+                                tstMDP = False
+                                break
+                        while tstMDP:
+                            nvMdp = input("Indiquez le nouveau mdp\n")
+                            confMdp = input("Réindiquez le nouveau mdp\n")
+                            if verifMDP(nvMdp,confMdp):
+                                i.changerMotDePasse(nvMdp)
+                                tstMDP = False
+                            else:
+                                print("Les deux mdp ne correspondent pas, veuillez réessayer")
+
+                        # verifMDP = True
+                        # while verifMDP:
+                        #     oldMDP = input("Indiquez votre mot de passe actuel\n")
+                        #     if oldMDP == i.mdp:
+                        #         verifMDP = False
+                        #     else:
+                        #         print("Erreur dans le mot de passe")
+                        # testMDP = True
+                        # while testMDP:
+                        #     mdp = input("Saisissez votre nouveau mdp:\n")
+                        #     confMdp = input("Saisissez une seconde fois votre mdp:\n")
+                        #     if mdp == confMdp:
+                        #         i.changerMotDePasse(mdp)
+                        #         testMDP = False
+                        #     else:
+                        #         print("Les deux mdp ne correspondent pas, veuillez réessayer")
+
 
                     elif choix == "2": # Afficher les livres disponibles
                         choix = input("Recherchez :\n\t"
@@ -322,6 +362,6 @@ while True:
 
     elif nouveau == "4": # QUITTER (ça réécrit par-dessus le fichier .txt)
         # tprint("Au revoir : (",font="tarty2")
-        bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
-        bibliotheque.exportLivres("./References/Livres.txt")
+        bibliotheque.exportUtilisateurs(chemin + "/References/Utilisateurs.txt")
+        bibliotheque.exportLivres(chemin + "/References/Livres.txt")
         break
