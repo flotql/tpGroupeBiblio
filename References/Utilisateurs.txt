@@ -7,3 +7,4 @@ a.b ; a ; b ; ab ; [] ; 1
 t.test ; test ; test ; eeeee ; [] ; 1
 a.aezr ; azer ; aezr ; az ; [] ; 1
 p.op ; po ; op ; er ; [] ; 4
+P.Jean ; Petit ; Jean ; Azerty31- ; [] ; 1

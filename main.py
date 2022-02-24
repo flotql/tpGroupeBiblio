@@ -11,6 +11,7 @@ from Classes.Bibliotheque import Biblio,BD,Livre
 from Classes.User import User
 from artT.art import *
 import re
+
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
 tprint("Bonjour : )",font="tarty2")
@@ -35,8 +36,14 @@ while True:
         prenom = input("Saisissez votre prénom:\n")
         testMDP = True
         while testMDP:
-            mdp = getpass.getpass('Indiquez le mdp (votre saisie ne s\'affichera pas):')
-            # mdp = "test"
+            regexTest = True
+            while regexTest:
+                mdp = getpass.getpass("Indiquez le mdp (votre saisie ne s\'affichera pas):\n"
+                                    "il doit avoir au moins une majuscule, un chiffre et un caractère spécial\n")
+                if not creationMDP(mdp):
+                    print("Erreur dans la création du mot de passe")
+                else:
+                    regexTest = False
             confMdp = getpass.getpass('Ecrivez le mot de passe une seconde fois:\n')
             if not verifMDP(mdp,confMdp):
                 print("Erreur de saisie")
