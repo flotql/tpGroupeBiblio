@@ -20,8 +20,8 @@ class Personne:
 
 
 
-# c = Personne("p.maxime", "przybylo", "maxime", "Azerty77")
-# print(c.nom)
-# print(c.Id)
-# c.DefinirID()
-# print(c.Id)
+c = Personne("p.maxime", "przybylo", "maxime", "Azerty77")
+print(c.nom)
+print(c.id)
+c.DefinirID()
+print(c.id)

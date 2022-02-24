@@ -1,10 +1,10 @@
 from datetime import *
-import sys
+import sys # Le module sys fournit plusieurs informations, telles que la version de l’interpréteur, la valeur maximale que la variable peut contenir, les informations de copyright de l’interpréteur Python, etc.
 sys.path.insert(1, './Classes')
 from Classes.Bibliotheque import Biblio,BD,Livre
 from Classes.User import User
-from art import *
 import re
+from art import * # Le module art permet par exemple de changer la police d'écriture par exemple
 
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
