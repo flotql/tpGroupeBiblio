@@ -33,9 +33,9 @@ class Biblio:
                 self.utilisateurs.append(objUser)
 
     def exportUtilisateurs(self,chemin):
-        with open(chemin, "w") as file:
+        with open(chemin, "w") as file: # with open permet de fermer automatiquement le fichier # "w" permet de tout ré-écrire dans le fichier .txt
             for i in self.utilisateurs:
-                file.write(str(i)+"\n")
+                file.write(str(i)+"\n") # retour à la ligne dès la fin de i (utilisateur)
 
     def importLivres(self,chemin):
         openLivres = open(chemin, "r")
