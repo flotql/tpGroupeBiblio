@@ -43,12 +43,13 @@ class Biblio:
         for i in lireLivres:
             lesLivres = i.split(" ; ")
             if len(lesLivres) == 8:
-                objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6], lesLivres[7][:-1])
+                objLivre = Livre(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[5],lesLivres[6], lesLivres[7][:-1]) # le [:-1] permet d'enlever le dernier /n dans le fichier .txt (ex : ligne 12 qui apparaît vide dans Livres.txt)
             else:
-                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[8],lesLivres[9][:-1],lesLivres[5],lesLivres[6], lesLivres[7])
+                objLivre = BD(lesLivres[0],lesLivres[1],lesLivres[2],lesLivres[3],lesLivres[4],lesLivres[8],lesLivres[9][:-1],lesLivres[5],lesLivres[6], lesLivres[7]) # le [:-1] sera quand même au niveau du dessinateur, on met les ID dans l'ordre du constructeur
             self.livres.append(objLivre)
             if not objLivre.genre in self.rayon:
                 self.rayon.append(objLivre.genre)
+
             if not objLivre.auteur in self.auteur:
                 self.auteur.append(objLivre.auteur)
             if not objLivre.categorie in self.categorie:
@@ -124,7 +125,7 @@ class Biblio:
         print("Votre inscription est validée")
 
     def ajoutLivre(self,nouveauLivre):
-        self.livres.append(nouveauLivre)
+        self.livres.append(nouveauLivre) # on append dans la liste livres
         print("Le livre a bien été ajouté")
 
 

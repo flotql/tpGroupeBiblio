@@ -1,19 +1,19 @@
 from datetime import *
 import sys # Le module sys fournit plusieurs informations, telles que la version de l’interpréteur, la valeur maximale que la variable peut contenir, les informations de copyright de l’interpréteur Python, etc.
-sys.path.insert(1, './Classes')
+sys.path.insert(1, './Classes') # Pour éviter les problèmes quand on veut accéder au dossier Classes
 from Classes.Bibliotheque import Biblio,BD,Livre
-from Classes.User import User
-import re
-from art import * # Le module art permet par exemple de changer la police d'écriture par exemple
+from Classes.User import User 
+import re # Le module re permet d'utiliser des expressions régulières avec Python
+from art import * # Le module art permet par exemple de changer la police d'écriture 
 
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
 tprint("Bonjour : )",font="tarty2")
 tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
-bibliotheque = Biblio()
-bibliotheque.importUtilisateurs("./References/Utilisateurs.txt")
-bibliotheque.importLivres("./References/Livres.txt")
+bibliotheque = Biblio() # on créé d'abord la bibliothèque
+bibliotheque.importUtilisateurs("./References/Utilisateurs.txt") # on importe tout le fichier .txt
+bibliotheque.importLivres("./References/Livres.txt") # on importe tout le fichier .txt
 
 while True:
     connecter = False
@@ -35,7 +35,7 @@ while True:
                       "(3) 5-7 : 7.00 euros par mois\n\t"
                       "(4) 7-10 : 9.00 euros par mois\n\t")
         nouvelInscrit = User("",nom, prenom, mdp, grade)
-        nouvelInscrit.definirID()
+        nouvelInscrit.definirID() # on remplit l'ID ""
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         # fonction print le User nouvellement créé
         #  print "Votre inscription est validée"
@@ -59,8 +59,8 @@ while True:
             if choixGenre == "0":
                 genre = input("Saisissez le genre de votre roman")
             else:
-                genre = bibliotheque.rayon[int(choixGenre) - 1]
-            objLivre = Livre(titre,auteur,langue,genre,categorie)
+                genre = bibliotheque.rayon[int(choixGenre) - 1] # -1  car on a fait +1 dans la méthode triLivres
+            objLivre = Livre(titre,auteur,langue,genre,categorie) 
             objLivre.Definirref()
             bibliotheque.ajoutLivre(objLivre)
         elif type == "2": # Ajout BD
@@ -164,7 +164,7 @@ while True:
                         if choix == "1":
                             choix = input(" Quel livre cherchez-vous?\n")
                             # str = choix
-                            # if any(re.findall(r'a|b|c', str, re.IGNORECASE)):
+                            # if any(re.findall(r'a|b|c', str, re.IGNORECASE)): # (pas terminé)
                             print(f"Voici les livres comportant {choix} :\t")
                             bibliotheque.rechercheLivre("titre", choix)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
@@ -197,7 +197,7 @@ while True:
 
                     elif choix == "4": # Emprunter un livre
                         # enumerer la liste livredisponible et se servir du index pour demander de choisir
-                        for index, livreliste in enumerate(bibliotheque.disponible):
+                        for index, livreliste in enumerate(bibliotheque.disponible): # enumerate permet de récupérer l'index
                             print("("+str(index+1)+")", livreliste.titre)
                         choixdulivre = int(input("\nQuel livre souhaitez-vous emprunter ? Tapez 0 pour quitter\n"))
                         if choixdulivre != 0:
@@ -216,7 +216,7 @@ while True:
                                     livreBiblio.retour = str(livreBiblio.retour)
                                     break
                             input('\nTaper sur Entrer pour continuer')
-
+                        # pas obligé de finir par un else ou elif
 
                     elif choix == "5": # Rendre un livre
                         if i.emprunts == []:
@@ -241,7 +241,7 @@ while True:
                                     bibliotheque.disponible.append(livreBiblio)
                             i.emprunts.pop(indexLivreARendre - 1)
                             input('\nTaper sur Entrer pour continuer')
-
+                            
                     elif choix == "6": # Prolonger un Emprunt
                         prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
                         if prolonger.lower() != "non" and prolonger.lower() != "oui":
@@ -263,7 +263,9 @@ while True:
                                         titreLivreEmprunter.update(livreActuel)
                             livre = int(input("Quel livre souhaitez-vous prolonger ?\n"))
                             if livre > decompte or livre < 1:
+                                print("**********************")
                                 print("Veuillez entrer l'index correspondant à votre livre")
+                                print("**********************")
                             else:
                                 print(titreLivreEmprunter[livre])
                                 duree = input("Combien de temps souhaitez-vous prolonger ? :\n\t"
@@ -293,8 +295,8 @@ while True:
                                       "(2) 3-4 : 5.00 euros par mois\n\t"
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
-                        i.ChangerGrade(grade)
-                        if "0" < i.grade <= "4":
+                        if "0" < grade <= "4":
+                            i.ChangerGrade(grade)
                             print("**********************")
                             print("Votre nouveau grade est :", i.grade)
                             print("**********************")
@@ -314,8 +316,8 @@ while True:
         if not connecter:
             print("Erreur d'identification")
 
-    elif nouveau == "4": # QUITTER (ça réécrit par-dessus le fichier .txt)
-        # tprint("Au revoir : (",font="tarty2")
+    elif nouveau == "4": # QUITTER (ça réécrit par-dessus le fichier .txt) (ça permet l'export de ça qu'à rentré l'utilisateur)
+        tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
