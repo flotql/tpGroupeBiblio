@@ -60,7 +60,7 @@ while True:
         nouvelInscrit.definirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         connecte = True
-        nouveau = 1
+        nouveau = 1  # PROBLEME ATM NE SORT PAS DE LA POUR EXECUTER LA SUITE DU PROGRAMME >---!---<
 
     elif nouveau == "3":  # Ajouter un livre
         print("Démarrage de l'ajout d'un livre dans la bibliotheque")
