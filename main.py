@@ -88,11 +88,10 @@ while True:
             bibliotheque.ajoutLivre(objBD)
 
     elif nouveau == "1": # l'utilisateur a déjà un compte
-        nom = input("Saisissez votre nom:\n")
-        prenom = input("Saisissez votre prénom:\n")
+        id = input("Saisissez votre identifiant:\n")
         mdp = input("Saisissez votre mdp:\n")
         for i in bibliotheque.utilisateurs:
-            if i.nom == nom and i.prenom == prenom and i.mdp == mdp:
+            if i.id == id and i.mdp == mdp:
                 print("Connection réussie")
                 connecter = True
                 continuer = True
