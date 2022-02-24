@@ -56,11 +56,11 @@ while True:
                       "(2) 3-4 : 5.00 euros par mois\n\t"
                       "(3) 5-7 : 7.00 euros par mois\n\t"
                       "(4) 7-10 : 9.00 euros par mois\n\t")
-        nouvelInscrit = User("",nom, prenom, mdp, grade)
+        nouvelInscrit = User("", nom, prenom, mdp, grade)
         nouvelInscrit.definirID()
         bibliotheque.ajoutUtilisateur(nouvelInscrit)
         connecte = True
-        nouveau = 1  # PROBLEME ATM NE SORT PAS DE LA POUR EXECUTER LA SUITE DU PROGRAMME >---!---<
+        nouveau = 1  # >---!---< PROBLEME NE SORT PAS DE LA POUR EXECUTER LA SUITE DU PROGRAMME >---!---<
 
     elif nouveau == "3":  # Ajouter un livre
         print("Démarrage de l'ajout d'un livre dans la bibliotheque")
