@@ -8,8 +8,37 @@ from art import * # Le module art permet par exemple de changer la police d'écr
 
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
-tprint("Bonjour : )",font="tarty2")
-tprint("Bienvenue dans la Bibliotheque",font="tarty2")
+
+
+print(r"""
+ ____ ____ ____ ____ ____ ____ ____ 
+||B |||O |||N |||J |||O |||U |||R ||
+||__|||__|||__|||__|||__|||__|||__||
+|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+""")
+print(r"""
+  ____  ___  _____  _   _ __     __ _____  _   _  _   _  _____                      
+ | __ )|_ _|| ____|| \ | |\ \   / /| ____|| \ | || | | || ____|                     
+ |  _ \ | | |  _|  |  \| | \ \ / / |  _|  |  \| || | | ||  _|                       
+ | |_) || | | |___ | |\  |  \ V /  | |___ | |\  || |_| || |___                      
+ |____/|___||_____||_| \_|   \_/   |_____||_| \_| \___/ |_____|                     
+  ____     _     _   _  ____    _         _                                         
+ |  _ \   / \   | \ | |/ ___|  | |       / \                                        
+ | | | | / _ \  |  \| |\___ \  | |      / _ \                                       
+ | |_| |/ ___ \ | |\  | ___) | | |___  / ___ \                                      
+ |____//_/   \_\|_| \_||____/  |_____|/_/   \_\                                     
+  ____  ___  ____   _      ___  ___  _____  _   _  _____  ___   _   _  _____    __  
+ | __ )|_ _|| __ ) | |    |_ _|/ _ \|_   _|| | | || ____|/ _ \ | | | || ____|  _\ \ 
+ |  _ \ | | |  _ \ | |     | || | | | | |  | |_| ||  _| | | | || | | ||  _|   (_)| |
+ | |_) || | | |_) || |___  | || |_| | | |  |  _  || |___| |_| || |_| || |___   _ | |
+ |____/|___||____/ |_____||___|\___/  |_|  |_| |_||_____|\__\_\ \___/ |_____| (_)| |
+                                                                                /_/ 
+""")
+
+
+
+# tprint("Bonjour : )",font="tarty2")
+# tprint("Bienvenue dans la Bibliotheque",font="tarty2")
 
 bibliotheque = Biblio() # on créé d'abord la bibliothèque
 bibliotheque.importUtilisateurs("./References/Utilisateurs.txt") # on importe tout le fichier .txt
@@ -325,3 +354,4 @@ while True:
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
+

@@ -115,9 +115,9 @@ class Biblio:
                     livres.append(j)
         if livres == []:
             print("Aucun livre ne correspond")
-        else:
-            for i in livres:
-                print(i)
+        # else:
+        #     for i in livres:
+        #         print(i)
 
 
     def ajoutUtilisateur(self,nouvelUtilisateur):
