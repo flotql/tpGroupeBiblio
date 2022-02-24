@@ -28,7 +28,14 @@ while True:
         print("Démarrage de votre inscription")
         nom = input("Saisissez votre nom:\n")
         prenom = input("Saisissez votre prénom:\n")
-        mdp = input("Saisissez votre mdp:\n")
+        testMDP = True
+        while testMDP:
+            mdp = input("Saisissez votre mdp:\n")
+            confMdp = input("Saisissez une seconde fois votre mdp:\n")
+            if mdp == confMdp:
+                testMDP = False
+            else:
+                print("Les deux mdp ne correspondent pas, veuillez réessayer")
         grade = input("Combien de livres souhaitez vous emprunter?\n\t"
                       "(1) 1-2 : gratuit\n\t"
                       "(2) 3-4 : 5.00 euros par mois\n\t"
