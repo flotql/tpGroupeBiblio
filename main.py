@@ -295,12 +295,16 @@ while True:
                                       "(2) 3-4 : 5.00 euros par mois\n\t"
                                       "(3) 5-7 : 7.00 euros par mois\n\t"
                                       "(4) 7-10 : 9.00 euros par mois\n\t")
-                        if "0" < grade <= "4":
+                        if "0" < grade <= "4" and grade != i.grade:
                             i.ChangerGrade(grade)
                             print("**********************")
                             print("Votre nouveau grade est :", i.grade)
                             print("**********************")
                             input('Taper sur Entrer pour continuer')
+                        elif grade == i.grade:
+                            print("**********************")
+                            print("Votre grade est déjà de", grade)
+                            print("**********************")
                         else:
                             print("**********************")
                             print("Veuillez entrer un grade compris entre 1 et 4 !")
@@ -316,7 +320,7 @@ while True:
         if not connecter:
             print("Erreur d'identification")
 
-    elif nouveau == "4": # QUITTER (ça réécrit par-dessus le fichier .txt) (ça permet l'export de ça qu'à rentré l'utilisateur)
+    elif nouveau == "4": # QUITTER (ça réécrit par-dessus le fichier .txt) (ça permet l'export de ce qu'à rentré l'utilisateur)
         tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
