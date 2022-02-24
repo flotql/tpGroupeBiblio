@@ -314,7 +314,7 @@ while True:
         if not connecter:
             print("Erreur d'identification")
 
-    elif nouveau == "3": # QUITTER (ça réécrit par-dessus le fichier .txt)
+    elif nouveau == "4": # QUITTER (ça réécrit par-dessus le fichier .txt)
         # tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
