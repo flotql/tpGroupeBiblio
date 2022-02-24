@@ -9,7 +9,6 @@ from art import * # Le module art permet par exemple de changer la police d'écr
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
 
-
 print(r"""
  ____ ____ ____ ____ ____ ____ ____ 
 ||B |||O |||N |||J |||O |||U |||R ||
@@ -354,4 +353,20 @@ while True:
         bibliotheque.exportUtilisateurs("./References/Utilisateurs.txt")
         bibliotheque.exportLivres("./References/Livres.txt")
         break
+
+
+
+print(r"""
+     _    _   _   ____   _____ __     __ ___  ___  ____          _             ____   _               _          _   
+    / \  | | | | |  _ \ | ____|\ \   / // _ \|_ _||  _ \    ___ | |_    __ _  | __ ) (_)  ___  _ __  | |_  ___  | |_ 
+   / _ \ | | | | | |_) ||  _|   \ \ / /| | | || | | |_) |  / _ \| __|  / _` | |  _ \ | | / _ \| '_ \ | __|/ _ \ | __|
+  / ___ \| |_| | |  _ < | |___   \ V / | |_| || | |  _ <  |  __/| |_  | (_| | | |_) || ||  __/| | | || |_| (_) || |_ 
+ /_/   \_\\___/  |_| \_\|_____|   \_/   \___/|___||_| \_\  \___| \__|  \__,_| |____/ |_| \___||_| |_| \__|\___/  \__|
+       __                                                                                                            
+   _  / /                                                                                                            
+  (_)| |                                                                                                             
+   _ | |                                                                                                             
+  (_)| |                                                                                                             
+      \_\                                                                                                            
+""")
 
