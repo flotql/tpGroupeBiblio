@@ -7,6 +7,7 @@ def verifMDP(motDePasse, mdpActuel):
     else:
         return False
 
+
 def creationMDP(mdp):
     if not re.fullmatch(r'^[A-Za-z0-9@#$%^&+-:!=]{5,10}$', mdp):
         return False

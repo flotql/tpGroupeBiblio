@@ -3,28 +3,28 @@ import getpass
 import sys
 from functions import *
 import pathlib
+
 chemin = str(pathlib.Path(__file__).parent.resolve())
 sys.path.append(chemin + './Classes')
 sys.path.append(chemin + './artT')
 sys.path.append(chemin + './References')
-from Classes.Bibliotheque import Biblio,BD,Livre
+from Classes.Bibliotheque import Biblio, BD, Livre
 from Classes.User import User
 from artT.art import *
-import re
 
 # Rappel : mettre le code suivant dans la console : # python -m ensurepip # python -m pip install art
 
-tprint("Bonjour : )",font="tarty2")
-tprint("Bienvenue dans la Bibliotheque",font="tarty2")
+tprint("Bonjour : )", font="tarty2")
+tprint("Bienvenue dans la Bibliotheque", font="tarty2")
 
 bibliotheque = Biblio()
 bibliotheque.importUtilisateurs(chemin + "/References/Utilisateurs.txt")
 bibliotheque.importLivres(chemin + "/References/Livres.txt")
-nouveau = -1
+sort = 0
 
 while True:
-    if nouveau < 0:
-        connecter = False
+    if sort == 0:
+        connecte = False
         nouveau = input("Souhaitez vous:\n\t"
                         "(1) Vous connecter \n\t"
                         "(2) Vous inscrire \n\t"
@@ -32,7 +32,7 @@ while True:
                         "(4) Quitter\n")
         if nouveau != "1" and nouveau != "2" and nouveau != "3" and nouveau != "4":
             print("Merci d'inscrire le chiffre 1,2,3 ou 4\n")
-    if nouveau == "2": # l'utilisateur n'a pas de compte
+    if nouveau == "2":  # l'utilisateur n'a pas de compte
         print("Démarrage de votre inscription")
         nom = input("Saisissez votre nom:\n")
         prenom = input("Saisissez votre prénom:\n")
@@ -41,26 +41,27 @@ while True:
             regexTest = True
             while regexTest:
                 mdp = getpass.getpass("Indiquez le mdp (votre saisie ne s\'affichera pas):\n"
-                                    "il doit avoir au moins une majuscule, un chiffre et un caractère spécial\n")
+                                      "il doit avoir au moins une majuscule, un chiffre et un caractère spécial\n")
                 if not creationMDP(mdp):
                     print("Erreur dans la création du mot de passe")
                 else:
                     regexTest = False
             confMdp = getpass.getpass('Ecrivez le mot de passe une seconde fois:\n')
-            if not verifMDP(mdp,confMdp):
+            if not verifMDP(mdp, confMdp):
                 print("Erreur de saisie")
             else:
                 testMDP = False
-        grade = input("Combien de livres souhaitez vous emprunter?\n\t"
+            grade = input("Combien de livres souhaitez vous emprunter?\n\t"
                       "(1) 1-2 : gratuit\n\t"
                       "(2) 3-4 : 5.00 euros par mois\n\t"
                       "(3) 5-7 : 7.00 euros par mois\n\t"
                       "(4) 7-10 : 9.00 euros par mois\n\t")
-        nouvelInscrit = User("", nom, prenom, mdp, grade)
-        nouvelInscrit.definirID()
-        bibliotheque.ajoutUtilisateur(nouvelInscrit)
-        connecte = True
-        nouveau = 1  # >---!---< PROBLEME NE SORT PAS DE LA POUR EXECUTER LA SUITE DU PROGRAMME >---!---<
+            nouvelInscrit = User("", nom, prenom, mdp, grade)
+            nouvelInscrit.definirID()
+            bibliotheque.ajoutUtilisateur(nouvelInscrit)
+            connecte = True
+            sort = 1  # >---!---< PROBLEME NE SORT PAS DE LA POUR EXECUTER LA SUITE DU PROGRAMME >---!---<
+            testMDP = False
 
     elif nouveau == "3":  # Ajouter un livre
         print("Démarrage de l'ajout d'un livre dans la bibliotheque")
@@ -82,10 +83,10 @@ while True:
                 genre = input("Saisissez le genre de votre roman")
             else:
                 genre = bibliotheque.rayon[int(choixGenre) - 1]
-            objLivre = Livre(titre,auteur,langue,genre,categorie)
+            objLivre = Livre(titre, auteur, langue, genre, categorie)
             objLivre.definirRef()
             bibliotheque.ajoutLivre(objLivre)
-        elif type == "2": # Ajout BD
+        elif type == "2":  # Ajout BD
             print("Il s'agit d'une BD")
             categorie = "BD"
             titre = input("Saisissez le titre:\n")
@@ -98,8 +99,8 @@ while True:
             else:
                 genre = bibliotheque.rayon[int(choixGenre) - 1]
             choixCouleur = input("La BD est-elle colorée:\n\t"
-                            "(1) Oui\n\t"
-                            "(2) Non")
+                                 "(1) Oui\n\t"
+                                 "(2) Non")
             if choixCouleur == "1":
                 couleur = True
             else:
@@ -109,16 +110,16 @@ while True:
             objBD.Definirref()
             bibliotheque.ajoutLivre(objBD)
 
-    elif nouveau == "1": # l'utilisateur a déjà un compte
+    elif nouveau == "1":  # l'utilisateur a déjà un compte
         if not connecte:
             id = input("Saisissez votre identifiant:\n")
             mdp = input("Saisissez votre mdp:\n")
             for i in bibliotheque.utilisateurs:
                 if i.id == id and i.mdp == mdp:
                     print("Connection réussie")
-                    connecter = True
+                    connecte = True
                     nouvelInscrit = i
-            if not connecter:
+            if not connecte:
                 print("Erreur d'identification")
         if connecte:
             continuer = True
@@ -133,26 +134,26 @@ while True:
                               "(7) Changer de grade\n\t"
                               "(8) Se déconnecter\n\t")
 
-                if choix == "1": # Changer de Mot de Passe
+                if choix == "1":  # Changer de Mot de Passe
                     compteur = 0
                     tstMDP = True
-                    while not verifMDP(input("Indiquez le mot de passe actuel\n"),nouvelInscrit.mdp):
+                    while not verifMDP(input("Indiquez le mot de passe actuel\n"), nouvelInscrit.mdp):
                         print("Erreur de saisie")
                         compteur += 1
-                        if compteur >3:
+                        if compteur > 3:
                             print("Trop d'erreurs")
                             tstMDP = False
                             break
                     while tstMDP:
                         nvMdp = input("Indiquez le nouveau mdp\n")
                         confMdp = input("Réindiquez le nouveau mdp\n")
-                        if verifMDP(nvMdp,confMdp):
-                            #nouvelIncrit.changerMotDePasse
+                        if verifMDP(nvMdp, confMdp):
+                            # nouvelIncrit.changerMotDePasse
                             nouvelInscrit.changerMotDePasse(nvMdp)
                             tstMDP = False
                         else:
                             print("Les deux mdp ne correspondent pas, veuillez réessayer")
-                elif choix == "2": # Afficher les livres disponibles
+                elif choix == "2":  # Afficher les livres disponibles
                     choix = input("Recherchez :\n\t"
                                   "(1) Par auteur\n\t"
                                   "(2) Par rayon\n\t"
@@ -180,7 +181,8 @@ while True:
                         bibliotheque.triLivres(bibliotheque.categorie)
                         choix = input("Choisir une catégorie\n")
                         if "0" < choix <= str(len(bibliotheque.categorie)):
-                            print("Voici les livres disponibles de la catégorie", bibliotheque.categorie[int(choix) - 1], ":\t")
+                            print("Voici les livres disponibles de la catégorie",
+                                  bibliotheque.categorie[int(choix) - 1], ":\t")
                             bibliotheque.affichageTri("categorie", int(choix) - 1)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
                         else:
@@ -189,7 +191,8 @@ while True:
                         bibliotheque.triLivres(bibliotheque.langue)
                         choix = input("Choisir la langue\n")
                         if "0" < choix <= str(len(bibliotheque.langue)):
-                            print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1], ":\t")
+                            print("Voici les livres disponibles de la langue", bibliotheque.langue[int(choix) - 1],
+                                  ":\t")
                             bibliotheque.affichageTri("langue", int(choix) - 1)
                             input("\nAppuyez sur \"entrer\" pour continuer\n")
                         else:
@@ -237,13 +240,13 @@ while True:
                         print("**********************")
                         input('Taper sur Entrer pour continuer')
 
-                elif choix == "4": # Emprunter un livre
+                elif choix == "4":  # Emprunter un livre
                     # enumerer la liste livredisponible et se servir du index pour demander de choisir
                     for index, livreliste in enumerate(bibliotheque.disponible):
-                        print("("+str(index+1)+")", livreliste.titre)
+                        print("(" + str(index + 1) + ")", livreliste.titre)
                     choixdulivre = int(input("\nQuel livre souhaitez-vous emprunter ? Tapez 0 pour quitter\n"))
                     if choixdulivre != 0:
-                        choixdulivre = int(choixdulivre -1)
+                        choixdulivre = int(choixdulivre - 1)
                         # enumerer la liste livredisponible et ajouter a utilisateur.emprunts si l index correspond a son choix
                         nouvelInscrit.emprunts.append(bibliotheque.disponible[choixdulivre].ref)
                         print("\nVous avez emprunté", bibliotheque.disponible[choixdulivre].titre)
@@ -252,7 +255,7 @@ while True:
                         for livreBiblio in bibliotheque.livres:
                             if livreBiblio.ref == nouvelInscrit.emprunts[-1]:
                                 livreBiblio.dispo = "False"
-                                livreBiblio.retour = date.today()+timedelta(days=14)
+                                livreBiblio.retour = date.today() + timedelta(days=14)
                                 print("Il faudra rendre le livre avant le", livreBiblio.retour)
                                 # pour pouvoir exporter sans problème : passage du time en string
                                 livreBiblio.retour = str(livreBiblio.retour)
@@ -260,7 +263,7 @@ while True:
                         input('\nTaper sur Entrer pour continuer')
 
 
-                elif choix == "5": # Rendre un livre
+                elif choix == "5":  # Rendre un livre
                     if nouvelInscrit.emprunts == []:
                         print("Vous n'avez emprunté aucun livre.")
                         input('\nTaper sur Entrer pour continuer')
@@ -270,21 +273,22 @@ while True:
                         for index, livreEmprunter in enumerate(nouvelInscrit.emprunts):
                             for livreBiblio in bibliotheque.livres:
                                 if livreBiblio.ref == livreEmprunter:
-                                    print(("("+str(index+1)+")"), livreBiblio.titre, "// à rendre avant le", livreBiblio.retour)
-                                    titreLivreEmprunter[index]=livreBiblio.titre
+                                    print(("(" + str(index + 1) + ")"), livreBiblio.titre, "// à rendre avant le",
+                                          livreBiblio.retour)
+                                    titreLivreEmprunter[index] = livreBiblio.titre
 
                         indexLivreARendre = int(input("Quel livre voulais vous rendre?\n"))
-                        print("\nLe livre",titreLivreEmprunter[indexLivreARendre-1],"a bien été rendu")
-                        #i.emprunts[indexLivreARendre-1].dispo= "True"
+                        print("\nLe livre", titreLivreEmprunter[indexLivreARendre - 1], "a bien été rendu")
+                        # i.emprunts[indexLivreARendre-1].dispo= "True"
                         for livreBiblio in bibliotheque.livres:
-                            if livreBiblio.ref == nouvelInscrit.emprunts[indexLivreARendre-1]:
+                            if livreBiblio.ref == nouvelInscrit.emprunts[indexLivreARendre - 1]:
                                 livreBiblio.dispo = "True"
                                 livreBiblio.retour = "None"
                                 bibliotheque.disponible.append(livreBiblio)
                         nouvelInscrit.emprunts.pop(indexLivreARendre - 1)
                         input('\nTaper sur Entrer pour continuer')
 
-                elif choix == "6": # Prolonger un Emprunt
+                elif choix == "6":  # Prolonger un Emprunt
                     prolonger = input("Voulez-vous prolonger l'emprunt ? (oui/non)\n")
                     if prolonger.lower() != "non" and prolonger.lower() != "oui":
                         print("Merci d'écrire oui ou non")
@@ -296,12 +300,13 @@ while True:
                         print("**********************")
                         decompte = 0
                         titreLivreEmprunter = {}
-                        for index,refEmprunter in enumerate(nouvelInscrit.emprunts):
+                        for index, refEmprunter in enumerate(nouvelInscrit.emprunts):
                             for stockLivre in bibliotheque.livres:
                                 if refEmprunter == stockLivre.ref:
-                                    print("("+str(index+1)+")", "=", stockLivre.titre,"//", "Il doit être rendu d'ici le :", stockLivre.retour)
+                                    print("(" + str(index + 1) + ")", "=", stockLivre.titre, "//",
+                                          "Il doit être rendu d'ici le :", stockLivre.retour)
                                     decompte += 1
-                                    livreActuel = {(index+1): stockLivre.titre}
+                                    livreActuel = {(index + 1): stockLivre.titre}
                                     titreLivreEmprunter.update(livreActuel)
                         livre = int(input("Quel livre souhaitez-vous prolonger ?\n"))
                         if livre > decompte or livre < 1:
@@ -309,8 +314,8 @@ while True:
                         else:
                             print(titreLivreEmprunter[livre])
                             duree = input("Combien de temps souhaitez-vous prolonger ? :\n\t"
-                                "(1) 2 semaines\n\t"
-                                "(2) 1 mois\n\t")
+                                          "(1) 2 semaines\n\t"
+                                          "(2) 1 mois\n\t")
                             for stockLivre in bibliotheque.livres:
                                 if titreLivreEmprunter[livre] == stockLivre.titre:
                                     stockLivre.retour = datetime.strptime(stockLivre.retour, "%Y-%m-%d")
@@ -326,7 +331,7 @@ while True:
                                     stockLivre.retour = str(stockLivre.retour)
                             print("**********************")
 
-                elif choix == "7": # Changer de Grade
+                elif choix == "7":  # Changer de Grade
                     print("**********************")
                     print("Votre grade actuel est :", nouvelInscrit.grade)
                     print("**********************")
@@ -347,14 +352,14 @@ while True:
                         print("**********************")
                         input('Taper sur Entrer pour continuer')
 
-                elif choix == "8": # Se Déconnecter
+                elif choix == "8":  # Se Déconnecter
                     continuer = False
                     print("Déconnexion réussie")
                 else:
                     print("Inscrire un chiffre entre 1 et 8")
             break
 
-    elif nouveau == "4": # QUITTER (ça réécrit par-dessus le fichier .txt)
+    elif nouveau == "4":  # QUITTER (ça réécrit par-dessus le fichier .txt)
         # tprint("Au revoir : (",font="tarty2")
         bibliotheque.exportUtilisateurs(chemin + "/References/Utilisateurs.txt")
         bibliotheque.exportLivres(chemin + "/References/Livres.txt")

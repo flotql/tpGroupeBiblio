@@ -1,12 +1,15 @@
 import sys
 import pathlib
+
 origine = str(pathlib.Path(__file__).parent.resolve())
 sys.path.append(origine + "../Classes")
-from Classes.Personne import *
+from Personne import *
+
+
 class User(Personne):
 
-    def __init__(self, id,  nom, prenom, mdp, grade):
-        super().__init__(id,  nom, prenom, mdp)
+    def __init__(self, id, nom, prenom, mdp, grade):
+        super().__init__(id, nom, prenom, mdp)
         self.emprunts = []
         self.grade = grade
 
@@ -19,11 +22,6 @@ class User(Personne):
     def emprunterLivre(self, livre):
         self.emprunts.append(livre)
 
-
 # d = User("c.gaetan", "corin", "gaetan", "JesuisGaetan", 1)
 #
 # print(d)
-
-
-
-
